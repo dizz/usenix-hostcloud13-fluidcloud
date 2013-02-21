@@ -1,3 +1,5 @@
+Base Header Level: 3
+
 # Notes #
 
 5 pages of double column

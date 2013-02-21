@@ -8,11 +8,11 @@ case "$1" in
 	cp *.sty temp
 	touch temp/out.md
 
-	cat paper.md >> temp/out.md
+	cat fluidcloud.md >> temp/out.md
 	# tail -n +4 apps.md >> temp/out.md
 
 	cd temp
-	/home/tmetsch/data/workspace/peg-multimarkdown/multimarkdown -t latex out.md > out.tex
+	multimarkdown -t latex out.md > out.tex
 
 	echo '\documentclass[letterpaper,twocolumn,10pt]{article}
 \usepackage{usenix,epsfig,endnotes}
@@ -41,7 +41,7 @@ Your Institution
   html)
     rm -rf web
     mkdir web
-    /home/tmetsch/data/workspace/peg-multimarkdown/multimarkdown -b *.md
+    multimarkdown -b *.md
     cp -r img/ web/img
     cp style.css web/
     mv *.html web/
