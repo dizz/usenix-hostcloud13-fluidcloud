@@ -4,12 +4,6 @@ Base Header Level: 3
 
 5 pages of double column
 
-# Abstract #
-
-Cloud computing is about bringing to users new levels of being connected, instead of the once disconnected PC type systems.  This proposal extends that level of connectedness in the cloud so that cloud services hosted by providers can relocate between clouds. The vision is that one cloud service provider will be able to connect with another and relocate services between each at the command of the service owners. In this world of competing cloud standards and software solutions, each partially complete, this work's central research question is:
-
-"How to intrinsically enable and fully automate relocation of services between clouds?"
-
 # Introduction #
 
 *Describe the problem*
@@ -65,7 +59,11 @@ TODO
 *what the solution achieves*
 *examples*
 
-The main scientific and technological objective in FluidCloud is to realise:“Cloud Fluidity, the processes, mechanisms, interfaces, software frameworks and tooling that enables cloud services to relocate, online or offline, from one provider to another all captured by the FluidCloud open architecture specification.”Having the ability for a cloud service to easily and seamlessly relocate from one provider to another will bring a huge disruptive, competitive advantage to any cloud computing service provider including innovative European ones. It will bring liberation to cloud services, both the application and data. It will bring service movement rights and liberation to the cloud.
+The main scientific and technological objective in FluidCloud is to realise:
+“Cloud Fluidity, the processes, mechanisms, interfaces, software frameworks and tooling that enables cloud services to relocate, online or offline, from one provider to another all captured by the FluidCloud open architecture specification.”
+
+Having the ability for a cloud service to easily and seamlessly relocate from one provider to another will bring a huge disruptive, competitive advantage to any cloud computing service provider including innovative European ones. It will bring liberation to cloud services, both the application and data. It will bring service movement rights and liberation to the cloud.
+
 To address this let us consider the key stakeholders that will be present in a future with FluidCloud present and available
 
 BLAH

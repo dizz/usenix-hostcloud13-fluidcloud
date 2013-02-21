@@ -14,23 +14,10 @@ case "$1" in
 	cd temp
 	multimarkdown -t latex out.md > out.tex
 
-	echo '\documentclass[letterpaper,twocolumn,10pt]{article}
-\usepackage{usenix,epsfig,endnotes}
-\\begin{document}
-\date{}
-\\title{\Large \\bf FluidCloud}
-\\author{
-{\\rm Your N.\ Here}\\
-Your Institution
-} % end author
-\\maketitle
-% Use the following at camera-ready time to suppress page numbers.
-% Comment it out when you first submit the paper for review.
-\\thispagestyle{empty}
-' | cat - out.tex > /tmp/out && mv /tmp/out out.tex
+	cat ../header.tex | cat - out.tex > /tmp/out && mv /tmp/out out.tex
 
 	# sed -i 's/\[htbp\]/\[H\]/g' ./thesis.tex
-	echo '\\end{document}' >> out.tex
+	cat  ../footer.tex >> out.tex
 
 	pdflatex -interaction=nonstopmode out.tex
 	pdflatex -interaction=nonstopmode out.tex
