@@ -54,17 +54,52 @@ TODO
 *what the solution achieves*
 *examples*
 
+To address this let us consider the key stakeholders that will be present in a future with FluidCloud present and available
+
+BLAH
+
+What are the advantages to these stakeholders of having FluidCloud available? More importantly what are the advantages that FluidCloud offers to end-users whose services deployed upon CSPs are potentially at risk?
+
+BLAH
+
+To verify the processes and framework the following architecture and implementation was created to validate the overall objectives.
+
 # Details: Architecture Implementation Evaluation #
 
 TODO
 *Technical details*
 *is the idea feasible?*
 
+## Architecture
+Core to realizing FluidCloud are key architectural components. The ‘CloudConduit’ handles and coordinates the overall (partial) relocation of the service. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. 
+
+## Implementation
+
+Migrators:
+
+ * OpenStack migrator
+ * VM image migrator (converter)
+ * SDC (?) migrator
+
+Process:
+
+ * the CloudConduit gets a request to migrate an application
+ * an application is a set of related VMs that make up the service
+ * each of those VMs may have associated resources - CloudConduit must determine these
+
+
+## Evaluation
+
+
+
 # Related Work #
 
-TODO
+TODO: take from SotA in proposal
 
 # Conclusions and Further Work #
 
 TODO
 what follows from your solution
+
+investigate the area of live relocation etc.
+
