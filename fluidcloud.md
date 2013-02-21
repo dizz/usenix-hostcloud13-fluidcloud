@@ -18,6 +18,9 @@ between clouds?"
 
 # Introduction #
 
+*Describe the problem*
+*State the contributions*
+
 Today, cloud computing (Grance, 2011) services have little means to 
 move from one cloud service provider to another. Standards are seen
 to be the panacea, yet have little adoption by the market.
@@ -39,14 +42,21 @@ under the control of the hosting provider.
 # The Problem (Retitle) #
 
 TODO
+*why it’s an interesting problem*
+*a narrative*
+*examples*
 
 # The Idea (Retitle) #
 
 TODO
+*what the solution achieves*
+*examples*
 
 # Details: Architecture Implementation Evaluation #
 
 TODO
+*Technical details*
+*is the idea feasible?*
 
 # Related Work #
 
@@ -55,3 +65,4 @@ TODO
 # Conclusions and Further Work #
 
 TODO
+what follows from your solution
