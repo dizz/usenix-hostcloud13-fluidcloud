@@ -8,7 +8,7 @@ case "$1" in
 	cp *.sty temp
 	touch temp/out.md
 
-	cat paper.md >> temp/out.md
+	cat fluidcloud.md >> temp/out.md
 	# tail -n +4 apps.md >> temp/out.md
 
 	cd temp
