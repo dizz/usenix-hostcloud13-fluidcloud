@@ -48,12 +48,39 @@ TODO
 *a narrative*
 *examples*
 
+ * how are decisions made to relocate to? Is it the user? Is it something automatic?
+ * Do current Brokers need extension to support service relocation? 
+ * how is information extracted from the service to be relocated? 
+ * Are existing provider interfaces used? 
+ * Does a service need to be profiled? 
+ * Can the service to be relocated be relocated online or offline?
+ * How are matching alternative target services discovered? Are there service interfaces for this?
+ * What happens if relocation fails? 
+ * How to ensure reliability during relocation?
+ * How is this creation of network resources between providers on demand accomplished?
+ * How is conversion of VMs accomplished?
+ * how the movement of block storage done especially the provider does not offer a means to export those? 
+ * how is the recreation of virtual networks achieved? 
+ * What to do with differing NaaS interfaces between two cloud service providers? 
+ * How are networking limitations in virtualisation overcome?
+ * how is the adaptation of applications written for one PaaS cloud service provider achieved?
+ * what are the adaptations needed if a service is decomposed and split over a number of providers? 
+ * How is service decomposition achieved? 
+ * what are the ways to relocate data today? 
+ * How can I reduce the amount of that to be transferred?
+ * if a service is moved from A to B, what are the strategies to move the service data?
+ * Is the data moved before the service or after the service? 
+ *  Does the service maintainer expect any downtime?
+ * how can SDN help?
+ * But what needs to be done so data is converted to match the technology?
+
 # The Idea (Retitle) #
 
 TODO
 *what the solution achieves*
 *examples*
 
+The main scientific and technological objective in FluidCloud is to realise:“Cloud Fluidity, the processes, mechanisms, interfaces, software frameworks and tooling that enables cloud services to relocate, online or offline, from one provider to another all captured by the FluidCloud open architecture specification.”
 To address this let us consider the key stakeholders that will be present in a future with FluidCloud present and available
 
 BLAH
