@@ -85,30 +85,35 @@ Core to realising FluidCloud are key architectural components. The ‘CloudCondu
 
 ## Implementation
 
-Python implementation, show concrete architecture?
+As an first Proof of Concept (PoC) the Architecture previously has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
-Describe testing environment. It should have some sort of realistic workload (e.g. a wordpress app?)
+**TBD: insert pic here**
 
+The CloudConduit has capabilities to processes requests for services to be migrated. When such an relocation is triggered it inspects the services for subcomponents and their dependencies. This is done through the Open Cloud Computing Interface (OCCI) which is implemented by both Cloud Providers (OpenStack and SmartOS based) in this PoC. Based on the inspection it creates a set of task which need to be executed. The distribution of the tasks is handled by the Broker.
 
-CloudConduit:
+The Broker has not the information to instantiate the appropriate Migrators which make up the Viaduct. The Migrators now take care of the actual relocation and topology change within the service.
 
- * processes requests for services to be migrated
- * inspects services for subcomponents and their dependencies
- * generates a tasks list - migration manifest 
- * these tasks are distributed to migrators either in parallel or sequentially ?
+To test this implementation the following scenario is considered: A simple node.js application is deployed with an Virtual Machine running within the Domain of OpenStack. This Virtual Machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
 
-Migrators:
+Based on the performance the decision is made to trigger a relocation to a Cloud provider which uses SmartOS as an Hypervisor. 
 
- * OpenStack migrator
- * VM image migrator (converter)
- * SDC (?) migrator
+**TBD: insert pic here**
 
-Process:
+After relocation the service should be composed out of an Virtual Machine running the node.js application. The application will still use the OpenStack Swift Object storage. But the attached block storage will be relocated with the Virtual Machine.
 
- * the CloudConduit gets a request to migrate an application
- * an application is a set of related VMs that make up the service
- * each of those VMs may have associated resources - CloudConduit must determine these
+The decision for this service topology after relocation is made by the CloudConduit. So in overall to be able to relocate this simple node.js application the following Migrators need to be placed on the Viaduct:
 
+ * OpenStack to SmartOS image converter (Hyperviros level).
+ * Relocator for the OpenStack block storage to be put within the VM at SmartOS (No block storage service available at the SmartOS side).
+ * Reconfiguration of the node.js application based on regex and a configuration file.
+
+When the relocation of the data parts (image and block storage) is accomplished the Broker restarts the Virtual Machine on the target side.
+
+This then overall demonstrates the earlier described process:
+
+ 1. the CloudConduit gets a request to migrate an application
+ 1. an application is a set of related VMs that make up the service
+ 1. each of those VMs may have associated resources - CloudConduit must determine these
 
 ## Evaluation
 
@@ -124,4 +129,5 @@ TODO
 what follows from your solution
 
 investigate the area of live relocation etc.
+
 
