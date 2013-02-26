@@ -87,7 +87,7 @@ Core to realising FluidCloud are key architectural components. The ‘CloudCondu
 
 As an first Proof of Concept (PoC) the Architecture previously has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
-**TBD: insert pic here**
+![image0][].
 
 The CloudConduit has capabilities to processes requests for services to be migrated. When such an relocation is triggered it inspects the services for subcomponents and their dependencies. This is done through the Open Cloud Computing Interface (OCCI) which is implemented by both Cloud Providers (OpenStack and SmartOS based) in this PoC. Based on the inspection it creates a set of task which need to be executed. The distribution of the tasks is handled by the Broker.
 
@@ -97,7 +97,7 @@ To test this implementation the following scenario is considered: A simple node.
 
 Based on the performance the decision is made to trigger a relocation to a Cloud provider which uses SmartOS as an Hypervisor. 
 
-**TBD: insert pic here**
+![image1][].
 
 After relocation the service should be composed out of an Virtual Machine running the node.js application. The application will still use the OpenStack Swift Object storage. But the attached block storage will be relocated with the Virtual Machine.
 
@@ -129,5 +129,9 @@ TODO
 what follows from your solution
 
 investigate the area of live relocation etc.
+
+[image0]: img/arch.png "Architectural Overview" width=200px
+
+[image1]: img/vm_before_after.png "The VM before and after relocation" width=200px
 
 
