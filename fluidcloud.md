@@ -103,9 +103,9 @@ After relocation the service should be composed out of an Virtual Machine runnin
 
 The decision for this service topology after relocation is made by the CloudConduit. So in overall to be able to relocate this simple node.js application the following Migrators need to be placed on the Viaduct:
 
- * OpenStack to SmartOS image converter (Hyperviros level).
- * Relocator for the OpenStack block storage to be put within the VM at SmartOS (No block storage service available at the SmartOS side).
- * Reconfiguration of the node.js application based on regex and a configuration file.
+ * OpenStack to SmartOS image converter (Hyperviros level) -- Snapshots an KVM image within Glance (through OCCI) and copies it to the target platform. Converts the image format in between.
+ * Relocator for the OpenStack block storage to be put within the VM at SmartOS -- Copies the data within the OpenStack Volume to the VM into a directory (which needs to be provisioned at this stage).
+ * Reconfiguration of the node.js application based on regex and a configuration file. Change paths for interpreters, and any network config needed (IP of OpenStack Swift).
 
 When the relocation of the data parts (image and block storage) is accomplished the Broker restarts the Virtual Machine on the target side.
 
