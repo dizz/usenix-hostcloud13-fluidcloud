@@ -1,21 +1,21 @@
 Base Header Level: 3
 
-# Notes #
+# Notes
 
 5 pages of double column
 
-# Introduction #
+# Introduction
 
 *Describe the problem*
 *State the contributions*
 
-Today, cloud computing (Grance, 2011) services have little means to move from one cloud service provider to another. Standards are seen to be the panacea, yet have little adoption by the market.
+Today, cloud computing [#Grance,2011] services have little means to move from one cloud service provider to another. Standards are seen to be the panacea, yet have little adoption by the market.
 
-Having the ability for a cloud service to easily and seamlessly move from one provider to another will bring a huge competitive advantage to any cloud computing service provider. It will have a huge advantage to European cloud computing service providers. It will bring liberation to cloud services, both the application and data. It will bring service movement rights to the cloud.
+Having the ability for a cloud service to easily and seamlessly move from one provider to another will bring a huge competitive advantage to any cloud computing service user. It will bring liberation to cloud services, both the application and data. It will bring service movement rights to the cloud.
 
-Cloud standards exist but are not adopted. Also, even the most relevant standards are limited. Software that abstracts cloud computing to common interfaces is more widely adopted. Yet for the services those standards or software can manage, they do not contain any concepts to or mechanisms of relocating those services. Ultimately, those cloud services remain locked under the control of the hosting provider.
+Cloud standards exist but are not adopted. Also, even the most relevant standards are limited. Software that abstracts cloud computing to common interfaces is more widely adopted. Yet for the services those standards or software can manage, they do not contain any concepts to or mechanisms of relocating those services. Ultimately, those cloud services remain locked under the control of the service provider.
 
-# The Problem (Retitle) #
+# Problem Statement
 
 TODO
 
@@ -53,16 +53,16 @@ Problems
  * how can SDN help?
  * But what needs to be done so data is converted to match the technology?
 
-# The Idea (Retitle) #
+# Cloud Fluidity
 
 TODO
 *what the solution achieves*
 *examples*
 
-The main scientific and technological objective in FluidCloud is to realise:
-“Cloud Fluidity, the processes, mechanisms, interfaces, software frameworks and tooling that enables cloud services to relocate, online or offline, from one provider to another all captured by the FluidCloud open architecture specification.”
+The main scientific and technological objective this paper tries to demonstrate is:
+\textbf{“Cloud Fluidity, the processes, mechanisms, interfaces, software frameworks and tooling that enables cloud services to relocate, online or offline, from one provider to another.”}
 
-Having the ability for a cloud service to easily and seamlessly relocate from one provider to another will bring a huge disruptive, competitive advantage to any cloud computing service provider including innovative European ones. It will bring liberation to cloud services, both the application and data. It will bring service movement rights and liberation to the cloud.
+TODO: reasons to relocate!
 
 To address this let us consider the key stakeholders that will be present in a future with FluidCloud present and available
 
@@ -74,7 +74,7 @@ BLAH
 
 To verify the processes and framework the following architecture and implementation was created to validate the overall objectives.
 
-# Details: Architecture Implementation Evaluation #
+# Details: Architecture Implementation and Evaluation #
 
 TODO
 *Technical details*
@@ -87,9 +87,11 @@ Core to realising FluidCloud are key architectural components. The ‘CloudCondu
 
 As an first Proof of Concept (PoC) the Architecture previously has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
-![image0][].
+![Architectural Overview][]
 
-The CloudConduit has capabilities to processes requests for services to be migrated. When such an relocation is triggered it inspects the services for subcomponents and their dependencies. This is done through the Open Cloud Computing Interface (OCCI) which is implemented by both Cloud Providers (OpenStack and SmartOS based) in this PoC. Based on the inspection it creates a set of task which need to be executed. The distribution of the tasks is handled by the Broker.
+[Architectural Overview]: img/arch.png "Architectural Overview" width=200px
+
+The CloudConduit has capabilities to processes requests for services to be migrated. When such an relocation is triggered it inspects the services for subcomponents and their dependencies. This is done an RESTful Cloud API which is implemented by both Cloud Providers (OpenStack and SmartOS based) in this PoC. Based on the inspection it creates a set of task which need to be executed. For this early setup the task are executed in direct order. Later on the scheduling of these tasks may become more complex. The distribution of the tasks is handled by the Broker.
 
 The Broker has not the information to instantiate the appropriate Migrators which make up the Viaduct. The Migrators now take care of the actual relocation and topology change within the service.
 
@@ -97,15 +99,17 @@ To test this implementation the following scenario is considered: A simple node.
 
 Based on the performance the decision is made to trigger a relocation to a Cloud provider which uses SmartOS as an Hypervisor. 
 
-![image1][].
+![Service before and after relocation][]
+
+[Service before and after relocation]: img/vm_before_after.png "The VM before and after relocation" width=200px
 
 After relocation the service should be composed out of an Virtual Machine running the node.js application. The application will still use the OpenStack Swift Object storage. But the attached block storage will be relocated with the Virtual Machine.
 
 The decision for this service topology after relocation is made by the CloudConduit. So in overall to be able to relocate this simple node.js application the following Migrators need to be placed on the Viaduct:
 
- * OpenStack to SmartOS image converter (Hyperviros level) -- Snapshots an KVM image within Glance (through OCCI) and copies it to the target platform. Converts the image format in between.
+ * OpenStack to SmartOS image converter (Hypervisor level) -- Snapshots an KVM image within Glance (through OCCI) and copies it to the target platform. Converts the image format in between.
  * Relocator for the OpenStack block storage to be put within the VM at SmartOS -- Copies the data within the OpenStack Volume to the VM into a directory (which needs to be provisioned at this stage).
- * Reconfiguration of the node.js application based on regex and a configuration file. Change paths for interpreters, and any network config needed (IP of OpenStack Swift).
+ * Reconfiguration of the node.js application based on regex and a configuration file. Change paths for interpreters, and any network configuration needed (IP of OpenStack Swift).
 
 When the relocation of the data parts (image and block storage) is accomplished the Broker restarts the Virtual Machine on the target side.
 
@@ -117,7 +121,9 @@ This then overall demonstrates the earlier described process:
 
 ## Evaluation
 
+The Architecture described in the last section should demonstrate that the concepts of FluidCloud are technical feasible. More over the important thing is that the concepts noted in this paper describe a way of enable fluidity of services between clouds.
 
+Note: further work and idea of FluidCloud: SDN, Data migration etc.
 
 # Related Work #
 
@@ -130,8 +136,9 @@ what follows from your solution
 
 investigate the area of live relocation etc.
 
-[image0]: img/arch.png "Architectural Overview" width=200px
 
-[image1]: img/vm_before_after.png "The VM before and after relocation" width=200px
+[#Grance,2011]: tbd
+
+
 
 
