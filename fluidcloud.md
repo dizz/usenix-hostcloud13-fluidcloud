@@ -66,7 +66,7 @@ The relocation of a PaaS based service and its data between providers. Key to th
 1. Service adaptation: IaaS to PaaS
 A software developer has developer an service on his own VM in an (Private) Cloud now he wants to roll-out this service on a availabel PaaS provider such as Google App Engine.
 
-# Details: Architecture Implementation and Evaluation #
+# Architecture Implementation and Evaluation #
 
 Core to realizing FluidCloud are the following components: The ‘CloudConduit’ handles and coordinates the overall (partial) relocation of the service. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. The following diagram shows the proposed high-level proposal:
 
