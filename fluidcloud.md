@@ -66,21 +66,60 @@ TODO: reasons to relocate!
 
 To address this let us consider the key stakeholders that will be present in a future with FluidCloud present and available
 
-BLAH
+* Cloud Service Developer End-user (CSD, e.g. University startup)
+Take the example where a university startup implements a new service in the cloud. The type of service is one that is architecture to handle bursty traffic as described in “Handling Flash Crowds from Your Garage” (Elson, 2008). After a period of time, the selected provider does not satisfy from technical (e.g. Amazon EC2 outages), economical (e.g. Google increasing prices for Google app engine ) or regulatory purpose, due to service offer changes. The startup can easily relocate their service to a new cloud service provider offering FluidCloud services. The startup can choose to find and pay for a relocation service operator, running FluidCloud software. Alternatively they can host the FluidCloud software themselves. Using either way they can have their services relocated to a new cloud service provider fitting their needs. The existing services will be relocated either through an easy to use user interface or for automated control, through a programmatic web interface.
+* Cloud Service Provider (CSP; e.g. CloudSigma, ProfitBricks)
+The cloud service provider operates FluidCloud software and offers it as a service. It is used to relocate new end-user services to their services from other, potentially, competing services. It will be up to the CSP to decide whether or not they wish to offer the service as bidirectional or unidirectional i.e. they only allow service relocation ingress and not egress or they allow both. In the case of a new end-user signing up with one of these types of stakeholders, the end-user would present their credentials to the existing CSP, where the existing services are running, and then direct the new CSP hosting FluidCloud services to begin the process of service relocation. The CSP could host this service for free as a means to encourage new business, charge for it directly or amortise the cost of relocation into the cost of providing service to that end-user.
+* Relocation Service Operator (RSO; e.g. Telefonica or Equinix)
+A service operator may choose to offer the FluidCloud software as a service to end-users and operate on the basis of providing cloud service relocation as a service. Typical candidates that would fit this role are those that have access to high-speed networks such as telecom operators (telco) or data centre operators with distributed geographical operations. In this case, the relocation service operator would sit between two cloud service providers and offer the service of service relocation. These types of candidates have strategic advantages over other RSOs who might build upon cloud service provider platforms given their strategic network assets. As such they can offer service relocation at a price or performance differentiated business model. Especially for the telco actor, the ever pressing need for new and innovative over-the-top (OTT) services and utilisation of their plentiful infrastructure would motivate the use of FluidCloud in order to relocate cloud service onto telco provided services.
+* Cloud Broker (e.g. Spotcloud or Prologue)
+Developers and providers of cloud brokerage services and software could consider adding cloud service relocation functionality to their cloud brokerage offers. Typically a cloud broker discovers and provisions the right cloud service on the behalf of the end-user. Once that target service is provisioned the end-user interacts and uses the target service, either through interfaces provided by the cloud broker or directly using the interfaces of the provisioned target cloud service. The cloud broker is aware of the end-users services and can continually watch for compatible services that can be offer to the end-user as a replacement, based on economic/cost reasons. If the end-user was interested the cloud broker can relocate the service on the end-user’s behalf, acting as a RSO and using the same RSO business model.
+
 
 What are the advantages to these stakeholders of having FluidCloud available? More importantly what are the advantages that FluidCloud offers to end-users whose services deployed upon CSPs are potentially at risk?
 
-BLAH
+* Supporting and Enabling the InterCloud 
+FluidCloud advances the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the support of software implemented in WP 3, 4 and 5.
+* Economical 
+Through the CloudConduit and Broker (WP3), FluidCloud can suggest new compatible services and based on economical differentiators and should the service owner want it; relocate their service to the suggested CSP (e.g. on that offers the same service but for cheaper).
+* Regulatory
+If a running cloud service is in an unrecognised or risky geographic region, a region where data privacy policies are incompatible or change to being incompatible then to comply with regulatory policy or law, the service provider can use FluidCloud to relocate that service at risk.
+* Liberation
+Cloud service developers and operators own their application and are responsible for end-user data. They should have right of movement for those services and the efficient means to enable them. FluidCloud liberates and ensures 
+* Positive Market Disruption
+By having the ability to relocate a service from one provider to another, the market place is opened further, enabling greater competition based on service differentiation and not on technical lock-in or limitation.
 
-To verify the processes and framework the following architecture and implementation was created to validate the overall objectives.
+To verify the processes and framework the proposal uses the following scenarios will be used to validate the overall objectives:
+
+1. Relocation of IaaS-based service
+For this demonstrator FluidCloud will show the relocation of a service (and its data) running within VMs (on a local development machine, private end or public cloud). Triggers for the relocation can be scaling, costs, dependability, hardware differentiation or geo location.  The service will automatically be adapted to the new environment
+1. Relocation of PaaS-based service
+This demonstrator will show the relocation of a PaaS based service and its data between providers. Key to this demonstration is the ability to adapt the service and convert the to the new environment. Motivation should be to bring PaaS services from closed environments (e.g. Google App Engine) into more open ones (e.g. CloudFoundry ).
+1. Smart (mobile) device and their connection to a Cloud service
+This demonstrator will show how smart (mobile) device can trigger relocation of a service they use so that the service they use resides closest to the device. Key here is to show no interruption to the end-user when relocating the service and data or providing paths to data services.
 
 # Details: Architecture Implementation and Evaluation #
 
 TODO
-*Technical details*
-*is the idea feasible?*
+
+![Conceptual Overview][]
+
+[Conceptual Overview]: img/arch_overview.png "Architectural Overview" width=200px
+
+For such scenarios, described above, to be technically realised there is a set of missing technologies that FluidCloud will research and develop. FluidCloud will provide the architecture and tooling to enable service relocation through three main research and development challenges:
+
+* Service Relocation – Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider,
+* Service Adaptation – Conversion, transformation and movement of the service and its related data,
+* Data Relocation - Relocation, migration, transcoding, transformation and conversion of the data belonging to the service.
+
+TODO:
+
+* Technical details
+* show overall arch pic from FC.
+* is the idea feasible?
 
 ## Architecture
+
 Core to realising FluidCloud are key architectural components. The ‘CloudConduit’ handles and coordinates the overall (partial) relocation of the service. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. 
 
 ## Implementation
