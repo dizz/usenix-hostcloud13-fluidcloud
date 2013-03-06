@@ -2,8 +2,12 @@ Base Header Level: 3
 
 # Overall Comments
 
-* We may need to be careful about the use of "service" - it should be qualified e.g. service instance or service type or service provider
-* structure wise we need:
+* Let's assume everything is in the "cloud". We may need to be careful about the use of "service" - it should be qualified e.g. 
+	* service instance
+	* service type
+	* service provider
+*	service owner is owner of the service instance
+* structure wise we need (and have :-)):
 	* problem
 	* vision/concept
 	* scenario
@@ -11,8 +15,12 @@ Base Header Level: 3
 	* evaluation
 
 # Abstract
-
 *state problem, why it's interesting/relevant solution achieves, what follows - 4 sentences*
+
+1. cloud standards suck
+2. paves the way for the InterCloud, makes relocating applications easier and more automated
+3. The solution…
+4. a number of research and engineering challenges are then presented including data optimisation, runtime architecture adaptation, goal oriented relocation
 
 # Introduction
 
