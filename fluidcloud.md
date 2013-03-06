@@ -70,6 +70,7 @@ In FluidCloud a service is defined as a set of service-components and the data b
 Core to realising FluidCloud are the following components: The ‘CloudConduit’ handles and coordinates the overall relocation (possibly partial) of the service instance. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. The following diagram shows the proposed high-level proposal:
 
 ![Conceptual Overview][]
+
 [Conceptual Overview]: img/arch_overview.png "Architectural Overview" width=200px
 
 The key components are the following:
@@ -99,6 +100,7 @@ A software developer has developer an service on his own VM in an (Private) Clou
 The first proof of concept of the conceptual architecture has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue. The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
 ![Architectural Overview][]
+
 [Architectural Overview]: img/fc-impl-1.png "Architectural Overview" width=200px
 
 The CloudConduit has capabilities to processes requests for service instances to be migrated. When such an relocation is triggered it inspects the service instances for sub-components (sub-services) and their dependencies. This is done an RESTful Cloud API which is implemented by both Cloud Providers (OpenStack and SmartOS based) in this PoC. Based on the inspection it creates a set of tasks which need to be executed. For this early setup the task are executed in sequential order. Later on the scheduling of these tasks may become more complex. The distribution of the tasks is handled by the Broker.
@@ -114,6 +116,7 @@ To test this implementation the following scenario is considered. A simple node.
 Based on the performance of the hypervisors the decision is made, by the service owner, to trigger a relocation to a Cloud provider which uses SmartOS as an Hypervisor. After relocation the VM will be running on the SmartOS platform. The data within the block storage will be relocated whereas the data in the object storage will stay where it is. This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology although is done automatically. The service topology before and after relocation is shown in the following diagram:
 
 ![Service before and after relocation][]
+
 [Service before and after relocation]: img/b+a.png "The VM before and after relocation" width=200px
 
 The decision for this service topology after relocation is made by the CloudConduit and should be guided by service owner policies. Overall, to to relocate this simple node.js application the following Migrators need to be placed on the Viaduct:
