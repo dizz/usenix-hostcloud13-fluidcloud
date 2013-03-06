@@ -10,7 +10,13 @@ Base Header Level: 3
 	* solution
 	* evaluation
 
+# Abstract
+
+*state problem, why it's interesting/relevant solution achieves, what follows - 4 sentences*
+
 # Introduction
+
+*Summarise problem and vision?*
 
 (*Problem*) Today, cloud computing [#Grance,2011] services have little means to easily move from one cloud service provider to another. Standards are seen to be the panacea, yet have little adoption by the market, especially by the dominant forces.
 
@@ -44,7 +50,7 @@ Related to relocating IaaS and PaaS services are the potential service adaptatio
 * Data Relocation - *Relocation, migration, transcoding, transformation and conversion of the data belonging to the service*.
 In FluidCloud a service is defined as a set of service-components and the data belonging to the service. Relocation of data fundamentally means moving bits and bytes. Currently tools such as GlobusOnline  provide a service for easy transferring data between Grid sites using the proven GridFTP  protocol, which allows for fast and reliable data transfers. Other solutions like the ZFS send/receive feature allow for snapshotting a dataset in constant time and allow easy relocation. Certainly upcoming technologies like Software Defined Networking can help when data path are needed on-demand to be established between to providers. 
 
-# Cloud Fluidity
+# Cloud Fluidity and FluidCloud (*vision and solution*)
 
 (*vision*)
 
@@ -82,7 +88,7 @@ The relocation of a PaaS based service and its data between providers. Key to th
 3. Service adaptation: IaaS to PaaS.
 A software developer has developer an service on his own VM in an (Private) Cloud now he wants to roll-out this service on a available PaaS provider such as Google App Engine.
 
-# Architecture Implementation and Evaluation #
+# Architecture Implementation and Evaluation (*solution: more details*)
 
 Core to realising FluidCloud are the following components: The ‘CloudConduit’ handles and coordinates the overall (partial) relocation of the service. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. The following diagram shows the proposed high-level proposal:
 
@@ -99,7 +105,7 @@ The key components are the following:
 
 With these concept in mind FluidCloud will provide the architecture and tooling to enable the InterCloud by enabling the tree main topics introduced earlier: Service Relocation, Service Adaptation and Data Relocation.
 
-# Implementation
+# Implementation (*solution:lowest level of details*)
 
 As a first Proof of Concept (PoC) the conceptual architecture previously has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue. The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
@@ -135,7 +141,7 @@ This then overall demonstrates the earlier described process:
  1. an application (*application versus service instance*) is a set of related VMs that make up the service
  1. each of those VMs may have associated resources - CloudConduit must determine these
 
-## Evaluation
+## Evaluation (*solution: results*)
 
 TODO
 
