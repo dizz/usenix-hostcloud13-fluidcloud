@@ -1,17 +1,28 @@
 Base Header Level: 3
+
 # Overall Comments
-* We may need to be care about the use of "service" - it should be qualified e.g. service instance or service type or service provider
+
+* We may need to be careful about the use of "service" - it should be qualified e.g. service instance or service type or service provider
+* structure wise we need:
+	* problem
+	* vision/concept
+	* scenario
+	* solution
+	* evaluation
+
 # Introduction
 
-Today, cloud computing [#Grance,2011] services have little means to easily move from one cloud service provider to another. Standards are seen to be the panacea, yet have little adoption by the market, especially by the dominant forces.
+(*Problem*) Today, cloud computing [#Grance,2011] services have little means to easily move from one cloud service provider to another. Standards are seen to be the panacea, yet have little adoption by the market, especially by the dominant forces.
 
-Having the ability for a cloud service to easily and seamlessly move from one provider to another will bring a huge competitive advantage to any cloud computing service user. It would bring liberation to cloud services, both their application and data. Essentially, it will bring service "movement rights" to the cloud (AE: argument to make: however there is no means to accomplish this).
+(*vision*) Having the ability for a cloud service to easily and seamlessly move from one provider to another will bring a huge competitive advantage to any cloud computing service user. It would bring liberation to cloud services, both their application and data. Essentially, it will bring service "movement rights" to the cloud (AE: argument to make: however there is no means to accomplish this).
 
-*Problem:* So today's cloud standards exist but are not adopted. Also, even the most relevant standards are limited. Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (examples). *Yet for cloud services those standards or software can manage, they do not contain any concepts to or mechanisms of relocating those services.* Ultimately, those cloud service instances remain locked under the control of the service provider.
+*(Problem)* So today's cloud standards exist but are not adopted. Also, even the most relevant standards are limited. Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (examples). *Yet for cloud services those standards or software can manage, they do not contain any concepts to or mechanisms of relocating those services.* Ultimately, those cloud service instances remain locked under the control of the service provider.
 
 # Problem Statement
 
-To address this let us consider some examples which demonstrate the need for a Framework such as FluidCloud:
+(*we're in the solution space here already*) 
+
+(*scenarios*) To address this let us consider some examples which demonstrate the need for a Framework such as FluidCloud:
 
 * Cloud Service Developer (CSD, e.g. University startup).
 Take the example where a university startup implements a new service in the cloud. The type of service is one that is architected to handle bursty traffic as described in [#Elson,2008]. After a period of time, the selected provider does not satisfy from technical (e.g. Amazon EC2 outages), economical (e.g. Google increasing prices for Google app engine ) or regulatory purpose, due to service offer changes. Now the benefits from a FluidCloud concept is that the startup can easily relocate their service to a new cloud service provider.
@@ -22,7 +33,7 @@ The cloud service provider operates FluidCloud software and offers it as a servi
 * Cloud Broker (e.g. Spotcloud or Zimory).
 Developers and providers of cloud brokerage services and software could consider adding cloud service relocation functionality to their cloud brokerage offers. Typically a cloud broker discovers and provisions the right cloud service on the behalf of the end-user. Once that target service is provisioned the end-user interacts and uses the target service, either through interfaces provided by the cloud broker or directly using the interfaces of the provisioned target cloud service. The cloud broker is aware of the end-users services and can continually watch for compatible services that can be offer to the end-user as a replacement, based on economic/geo-location/cost reasons. If the end-user was interested the cloud broker can relocate the service on the end-user’s behalf.
 
-For such scenarios, to be technically realised there is a set of missing technologies. FluidCloud fills these gaps such as:
+(*solution & key contributions*) For such scenarios, to be technically realised there is a set of missing technologies. FluidCloud fills these gaps such as:
 
 * Service Relocation -- *Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider*. 
 There are two types of cloud services that FluidCloud will support and enable relocation for: IaaS and PaaS based services. This entails that IaaS entities such as virtual machines and virtual storage devices (block and object storage) will need to be relocated. For PaaS, entities such as the service-components with packaged or compiled source code and possibly the data will need to be relocated. The decision to relocate will be something initiated by the owner of the service (e.g. through a user interface). The relocation may also be initiated by a Cloud Broker who has user-supplied policies to dictate under what conditions (such as costs) a service should be relocated.
@@ -34,6 +45,8 @@ Related to relocating IaaS and PaaS services are the potential service adaptatio
 In FluidCloud a service is defined as a set of service-components and the data belonging to the service. Relocation of data fundamentally means moving bits and bytes. Currently tools such as GlobusOnline  provide a service for easy transferring data between Grid sites using the proven GridFTP  protocol, which allows for fast and reliable data transfers. Other solutions like the ZFS send/receive feature allow for snapshotting a dataset in constant time and allow easy relocation. Certainly upcoming technologies like Software Defined Networking can help when data path are needed on-demand to be established between to providers. 
 
 # Cloud Fluidity
+
+(*vision*)
 
 *This might be better moved before the use cases?* A future InterCloud is described in (Bernstein, Ludvigson, Sankar, Diamond, & Morrow, 2009), (D. Bernstein, 2010), (Y. Demchenko, 2012) as well in a notable online conversation where James Urquhart, Cisco’s Cloud Programs and Communications Manager, clearly outlined the genesis and progression of it from singular and multi-cloud ecosystem we see today. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Google App Engine, CloudFoundry, OpenShift, Rackspace, Heroku and CloudSigma. 
 
@@ -55,6 +68,8 @@ Cloud service developers and operators own their application and are responsible
 
 * Positive Market Disruption.
 By having the ability to relocate a service from one provider to another, the market place is opened further, enabling greater competition based on service differentiation and not on technical lock-in or limitation.
+
+(*solution*)
 
 Service in the Cloud are a wide field because their implementation can use IaaS or PaaS for example. Therefore FluidCloud addresses:
 
