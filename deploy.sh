@@ -16,7 +16,7 @@ case "$1" in
 
 	cat ../header.tex | cat - out.tex > /tmp/out && mv /tmp/out out.tex
 
-	# sed -i 's/\[htbp\]/\[H\]/g' ./thesis.tex
+	sed -i 's/citep/cite/g' ./out.tex
 	cat  ../footer.tex >> out.tex
 
 	pdflatex -interaction=nonstopmode out.tex

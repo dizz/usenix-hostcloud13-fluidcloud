@@ -2,7 +2,7 @@ Base Header Level: 3
 
 # Introduction
 
-Today, cloud computing [#Grance,2011] service instances have little means to easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players.
+Today, cloud computing [#Grance:2011] service instances have little means to easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players.
 
 Currently, cloud standards exist but most are not widely adopted, especially *de jure* style. *De facto* style standards such as Amazon EC2 has somewhat more adoption. Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see Related Work). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad-hoc  efforts are spent by the service instance owners.
 
@@ -12,7 +12,7 @@ The proposed solution is the FluidCloud framework which aims to make relocating 
 
 Cloud service instances remain locked under the control of the service provider. FluidCloud will liberate these instances. Having the ability for a cloud service instance to easily and seamlessly move from one provider to another will bring advantages to any cloud service owner. It would bring more freedom to cloud service owners, instances, including their application and data. Essentially, it will bring service instance "movement rights" to the cloud. However there is no encompassing means to accomplish this.
 
-FluidCloud is something that fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl,2009], [#Bernstein,2010], [#Demchenko,2012] as well in a notable online conversation[^1] where James Urquhart, Cisco’s Cloud Programs and Communications Manager, clearly outlined the genesis and progression of it from singular and multi-cloud ecosystem we see today. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Google App Engine, CloudFoundry, OpenShift, Rackspace, Heroku and CloudSigma. 
+FluidCloud is something that fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl:2009], [#Bernstein:2010], [#Demchenko:2012] as well in a notable online conversation[^1] where James Urquhart, Cisco’s Cloud Programs and Communications Manager, clearly outlined the genesis and progression of it from singular and multi-cloud ecosystem we see today. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Google App Engine, CloudFoundry, OpenShift, Rackspace, Heroku and CloudSigma. 
 
 ## The FluidCloud Concept
 
@@ -38,7 +38,7 @@ By having the ability to relocate a service instance from one provider to anothe
 To understand further how FluidCloud can be applied in a more practical sense, consider some examples which demonstrate the need for the FluidCloud framework:
 
 * **Cloud Service Developer** (CSD, e.g. University startup).
-Take the example where a university startup implements a new service in the cloud. The type of service is one that is architected to handle bursty traffic as described in [#Elson,2008]. After a period of time, the selected provider does not satisfy from technical (e.g. Amazon EC2 outages), economical (e.g. Google increasing prices for Google app engine) or regulatory purpose, due to service offer changes. 
+Take the example where a university startup implements a new service in the cloud. The type of service is one that is architected to handle bursty traffic as described in [#Elson:2008]. After a period of time, the selected provider does not satisfy from technical (e.g. Amazon EC2 outages), economical (e.g. Google increasing prices for Google app engine) or regulatory purpose, due to service offer changes. 
 
   Now the benefits from a FluidCloud concept is that the startup can easily relocate their service to a new cloud service provider.
 
@@ -144,19 +144,19 @@ The Architecture described in the last section should demonstrate that the conce
 
 # Related Work
 
-Standards organisation defined interfaces such as OCCI[^1], CIMI[^1] or CDMI[^1] might realise interoperability from a user perspective but they do not solve the issue of relocation. The paper [#Petcu,2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discuss in [#Jr,2011]. Here it is noted that cloud systems utilising different hypervisors won’t interoperate, in part because they don’t use the same data formats. 
+Standards organisation defined interfaces such as OCCI[^1], CIMI[^1] or CDMI[^1] might realise interoperability from a user perspective but they do not solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discuss in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors won’t interoperate, in part because they don’t use the same data formats. 
 
 Adapter libraries enabled the means to manage multiple cloud offerings, The most prominent of these are libcloud[^1], fog.io[^1] and jClouds[^1]. There are commercial products available currently that aim to easily use multiple clouds at runtime. Such examples include RightScale[^1] and Enstratus[^1]. However these solutions only manage the lifecycle on each various cloud service provider's platform and they do not allow for the relocation of cloud service instances between providers.
 
-There are quite a number of Platform as a Service (PaaS) offerings available today. Most PaaS offerings tend to support multiple languages and a number of supporting services. Examples of these include Heroku , Windows Azure, Red Hat OpenShift, VMware CloudFoundry and Google App Engine. These platforms can be found to support Java, Python, Erlang, Node.js and other languages. What is important to consider with all of these offerings is the degree of lock-in that each offering brings to its users. The majority of the PaaS offerings leverage the existing interoperability work that each language (and its standard libraries - e.g. WSGI for Python) and supporting services (e.g. MySQL , RabbitMQ) already has. However, this is not uniform across all PaaS offerings.
+There are quite a number of Platform as a Service (PaaS) offerings available today. Most PaaS offerings tend to support multiple languages and a number of supporting services. Examples of these include Heroku, Windows Azure, Red Hat OpenShift, VMware CloudFoundry and Google App Engine. These platforms can be found to support Java, Python, Erlang, Node.js and other languages. What is important to consider with all of these offerings is the degree of lock-in that each offering brings to its users. The majority of the PaaS offerings leverage the existing interoperability work that each language (and its standard libraries - e.g. WSGI for Python) and supporting services (e.g. MySQL, RabbitMQ) already has. However, this is not uniform across all PaaS offerings.
 
-The Open Data Centre Alliance released a report [#Alliance,2012] on long distance service instance relocation. Noted within is that relocation of workload possible but “[…] migrations occur between disparate data centres of the same cloud provider […]” most of the time. Also noted within is the fact that the “[…] abstraction of a PaaS workload” is not yet finalised and that more collaborative efforts on this issue need to be made. So here the most obvious issues become clear: relocation is possible but mostly within service provider’s domain and that inter-domain (InterCloud) relocation on IaaS and PaaS level needs more research.
+The Open Data Centre Alliance released a report [#Alliance:2012] on long distance service instance relocation. Noted within is that relocation of workload possible but “[…] migrations occur between disparate data centres of the same cloud provider […]” most of the time. Also noted within is the fact that the “[…] abstraction of a PaaS workload” is not yet finalised and that more collaborative efforts on this issue need to be made. So here the most obvious issues become clear: relocation is possible but mostly within service provider’s domain and that inter-domain (InterCloud) relocation on IaaS and PaaS level needs more research.
 
-Also in [#Mizgier,2010] a model and means to evaluate the migration of one system to another. It notes that aspects related to the migration of data are on of the biggest challenge and, as particular to this work, where data model conversion must be carried out.
+Also in [#Mizgier:2010] a model and means to evaluate the migration of one system to another. It notes that aspects related to the migration of data are on of the biggest challenge and, as particular to this work, where data model conversion must be carried out.
 
 Currently available software solutions for data management exists – such as: Cloudant[^1], Xeround[^1], MongoLab[^1] or Amazon S3[^1]. But currently they lack the ability to convert data between the service instances, or relocate data. It is noted that services like Cloudant offer means of distributing data location based. Some means of dealing with the relocation of IaaS-based services (composed of Virtual Machines) is available today.
 
-The paper [#Ward,2010] looks at InterCloud more from the federation aspect and the authors describe their architectural vision of that InterCloud. One important aspect that the authors do note is the importance of cloud brokers in their architecture. The concept of cloud brokerage is compliant with the definition provider by Gartner of Cloud Services Brokerage [#Plummer,2011] offering aggregation, integration and customisation, the 3 primary roles expected of such a cloud service broker.  This is further refined in the NIST Definition of Cloud Computing [#Grance,2011].
+The paper [#Ward:2010] looks at InterCloud more from the federation aspect and the authors describe their architectural vision of that InterCloud. One important aspect that the authors do note is the importance of cloud brokers in their architecture. The concept of cloud brokerage is compliant with the definition provider by Gartner of Cloud Services Brokerage [#Plummer:2011] offering aggregation, integration and customisation, the 3 primary roles expected of such a cloud service broker.  This is further refined in the NIST Definition of Cloud Computing [#Grance:2011].
 
 # Conclusions and Further Work
 
@@ -176,28 +176,29 @@ The Framework used for this PoC will be released and supported under an Open Sou
 
 
 
-[#Grance,2011]: tbd
+[#Grance:2011]: tbd
 
-[#Elson,2008]: "Handling Flash Crowds from Your Garage"
+[#Elson:2008]: "Handling Flash Crowds from Your Garage"
 
-[#Mizgier,2010]: tbd
+[#Mizgier:2010]: tbd
 
-[#Ward,2010]: C. tbd
+[#Ward:2010]: C. tbd
 
-[#Plummer,2011]: Daryl C. tbd
+[#Plummer:2011]: Daryl C. tbd
 
-[#BernsteinEtAl,2009]: Bernstein, Ludvigson, Sankar, Diamond, & Morrow, 2009
+[#BernsteinEtAl:2009]: Bernstein, Ludvigson, Sankar, Diamond, & Morrow, 2009
 
-[#Bernstein,2010]: D. Bernstein, 2010
+[#Bernstein:2010]: D. Bernstein, 2010
 
-[#Demchenko,2012]: Y. Demchenko, 2012
+[#Demchenko:2012]: Y. Demchenko, 2012
 
-[#Alliance,2012]: ODCA
+[#Alliance:2012]: ODCA
 
-[#Petcu,2011]: Dana's interop paper
+[#Petcu:2011]: Dana's interop paper
 
-[#Jr,2011]: JR? From dallas?
+[#Jr:2011]: JR? From dallas?
 
 
 
 [^1]: I'm a little footnote short and stout!
+
