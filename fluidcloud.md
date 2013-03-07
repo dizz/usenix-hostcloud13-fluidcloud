@@ -146,6 +146,29 @@ This then overall demonstrates the earlier described process:
 
 # Evaluation
 
+The smartos based zones (kernel level virt):
+
+	time sh -c "dd if=/dev/zero of=temp bs=1M count=512 && sync"
+	512+0 records in
+	512+0 records out
+	
+	real    0m4.703s
+	user    0m0.003s
+	sys     0m0.261s
+
+Vs the virtual machine running ubuntu 12.04:
+
+	time sh -c "dd if=/dev/zero of=temp bs=1M count=512 && sync"
+	512+0 records in
+	512+0 records out
+	536870912 bytes (537 MB) copied, 8.91375 s, 60.2 MB/s
+	 
+	real    0m11.147s
+	user    0m0.000s
+	sys     0m0.932s
+
+Both the smartos zone and the virtual machine running under kvm where evauluated on identical servers with Intel's Xeon CPUs.
+
 **TODO**
 
 * It works :p
@@ -199,5 +222,6 @@ The need for service relocation will become ever needed the more cloud services 
 [#Armstrong:2012]: D. Armstrong, D. Espling, J. Tordsson, K. Djemame, and E. Elmroth. Runtime Virtual Machine Recontextualization for Clouds. Euro-Par 2012 Workshops, Lecture Notes of Compouting Science, Vol. 7640, Springer-Verlag, pp. 567 - 576, 2012.
 
 [^1]: I'm a little footnote short and stout!
+
 
 
