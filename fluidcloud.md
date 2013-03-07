@@ -108,10 +108,7 @@ A software developer has developer an service on his own VM in an (Private) Clou
 
 # Implementation
 
-TODOs:
-* <intel_ostb> -> inter_fc -> <intel_sdc>* using dd, netcat for conversion
-
-The first proof of concept of the conceptual architecture has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue. The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
+The first proof of concept of the conceptual architecture for IaaS based relocation has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue. The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
 ![Architectural Overview][]
 
@@ -119,15 +116,15 @@ The first proof of concept of the conceptual architecture has been implemented u
 
 The CloudConduit has capabilities to processes requests for service instances to be migrated. When such an relocation is triggered it inspects the service instances for sub-components (sub-services) and their dependencies. This is done an RESTful Cloud API which is implemented by both Cloud Providers (OpenStack and SmartOS based) in this PoC. Based on the inspection it creates a set of tasks which need to be executed. For this early setup the task are executed in sequential order. Later on the scheduling of these tasks may become more complex. The distribution of the tasks is handled by the Broker.
 
-(*need to note that the broker has a list of suitable replacement services*)
+The Broker does now have the information to instantiate the appropriate Migrators that make up the Viaduct. The Migrators now take care of the actual relocation and topology change within the service instance.
 
-The Broker does not have the information to instantiate the appropriate Migrators that make up the Viaduct. The Migrators now take care of the actual relocation and topology change within the service instance.
+For this PoC the setup has been done within in one Data center but with two different platforms. The source service provider is realized using OpenStack while the target side is SmartOS. The trigger for the relocation is done based on an evaluation of both platforms. It shows that an virtual machine on the SmartOS platform has a significantly higher IO throughput:
 
-To test this implementation the following scenario is considered. A simple node.js application is deployed with an virtual machine running within the Domain of OpenStack. This virtual machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
+TODO: insert dd command output here. - @Andy do we want it here?
 
-(*should note that the object storage is not migrated - perhaps as it's not provided by openstack… it's S3*)
+Based on this evaluation, a simple node.js application is deployed with an virtual machine within OpenStack is to be relocated to SmartOS. This virtual machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
 
-Based on the performance of the hypervisors the decision is made, by the service owner, to trigger a relocation to a Cloud provider which uses SmartOS as an Hypervisor. After relocation the VM will be running on the SmartOS platform. The data within the block storage will be relocated whereas the data in the object storage will stay where it is. This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology although is done automatically. The service topology before and after relocation is shown in the following diagram:
+After relocation the virtual machine will be running on the SmartOS platform. The data within the block storage will be relocated whereas the data in the object storage will stay where it is (could be the use case of using an external provider such as Amazon's S3). This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology although is done automatically. The service topology before and after relocation is shown in the following diagram:
 
 ![Service before and after relocation][]
 
@@ -135,11 +132,9 @@ Based on the performance of the hypervisors the decision is made, by the service
 
 The decision for this service topology after relocation is made by the CloudConduit and should be guided by service owner policies. Overall, to to relocate this simple node.js application the following Migrators need to be placed on the Viaduct:
 
- * OpenStack to SmartOS image converter (Hypervisor level) -- Snapshots an KVM image within OpenStack Glance and copies it to the target platform. Essentially converts the image format in between.
- * Relocator for the OpenStack block storage. Copies the data from the block storage device in OpenStack cinder onto the Filesystem of the VM running on KVM in SmartOS (which needs to be provisioned at this stage).
- * Reconfiguration of the node.js application's configuration file based on regular expressions. Change paths for node.js interpreter, and network configuration needed (IP of OpenStack Swift instance).
-
-When the relocation of the data parts (the VM image) is accomplished the Broker restarts the virtual machine on the target side.
+ * The virtual machine image Migrator will pause the virtual machine on the OpenStack side and create a new virtual machine on the SmartOS side. Both machines are than booted using an prepared ubuntu iso image [^os1]. After booting the data is copied over using *netcat* and the *dd* command. After copying the virtual machine on the SmartOS platform can be booted.
+ * The Relocator for the OpenStack block storage copies the data from the block storage device in OpenStack cinder onto the Filesystem of the virtual machine running on KVM in a SmartOS zone. This is done with the help of the *ssh* protocol.
+ * Reconfiguration of the node.js application's configuration file is based on regular expressions and a simple python script. It changes the paths for node.js interpreter and the path to the data.
 
 This then overall demonstrates the earlier described process:
 
@@ -147,35 +142,15 @@ This then overall demonstrates the earlier described process:
  2. an application (*application versus service instance*) is a set of related VMs that make up the service instance
  3. each of those VMs may have associated resources - CloudConduit must determine these
 
+[^os1]: In this case the virtual machine within OpenStack was initially booted from a volume instead of an image.
+
 # Evaluation
 
 TODOs:
 * add in TCP/IP stack overhead and processing time of image, volume and service reconfig
 * 2GB volume, 512 VM size, over 1G ethernet
-* update the dd numbers
 
-The smartos based zones (kernel level virt):
-
-	time sh -c "dd if=/dev/zero of=temp bs=1M count=512 && sync"
-	512+0 records in
-	512+0 records out
-	
-	real    0m4.703s
-	user    0m0.003s
-	sys     0m0.261s
-
-Vs the virtual machine running ubuntu 12.04:
-
-	time sh -c "dd if=/dev/zero of=temp bs=1M count=512 && sync"
-	512+0 records in
-	512+0 records out
-	536870912 bytes (537 MB) copied, 8.91375 s, 60.2 MB/s
-	 
-	real    0m11.147s
-	user    0m0.000s
-	sys     0m0.932s
-
-Both the smartos zone and the virtual machine running under kvm where evauluated on identical servers with Intel's Xeon CPUs.
+ dd takes about ~5mins for 5.4Gb disk size for reloc
 
 **TODO**
 
@@ -230,6 +205,4 @@ The need for service relocation will become ever needed the more cloud services 
 [#Armstrong:2012]: D. Armstrong, D. Espling, J. Tordsson, K. Djemame, and E. Elmroth. Runtime Virtual Machine Recontextualization for Clouds. Euro-Par 2012 Workshops, Lecture Notes of Compouting Science, Vol. 7640, Springer-Verlag, pp. 567 - 576, 2012.
 
 [^1]: I'm a little footnote short and stout!
-
-
 
