@@ -1,9 +1,5 @@
 Base Header Level: 3
 
-TODOs:
-
-* Abstract should highlight: more arguing about why it is important to be able to move things around
-
 # Introduction
 
 Today, cloud computing [#Grance:2011] service instances cannot easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players. If where adopted, *de jure* standards are not as widely adopted as *de facto*  standards (e.g. Amazon EC2). Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see "Related Work"). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad-hoc  efforts are spent by the service instance owners.
@@ -108,22 +104,11 @@ The decision for this service topology after relocation is made by the CloudCond
 
 # Evaluation
 
-architecture
-prove POC works
-reasonable time for relocation
+The first outcome of this initial PoC was to proof that the Architecture satisfying the scenarios described in this paper. The distinction between the CloudConduit and the Broker was found useful as several technologies for the Broker part exist. Furthermore the Broker can be used to establish the Viaduct as this logical entity could be made up out of virtual machines which each host a Migrator. The overall architecture therefore has been proven to satisfy the needs.
 
-TODOs:
-* add in TCP/IP stack overhead and processing time of image, volume and service reconfig
-* 2GB volume, 512 VM size, over 1G ethernet
+Second outcome was to have first numbers in hand about the runtime of a relocation process. In the end it will be crucial that the runtime is minimized and actual life/online relocation will be possible. For the relocation of the service instance in the PoC a total downtime of 10min was needed. This combines the time for stopping the virtual machine and relocating it (seconds for stop, ~5 minutes for relocation of the virtual machien image of 5.4Gb), the time to move the data from the block storage to the VM (~1min minutes for 512Mb test file with) and finally the reconfiguration using (10sec to copy the script and execute it). Times fluctuated over several runs of the relocation. General the Time to relocation using this PoC will depend on the data payload sizes of the virtual machine image and the data in the block storage.
 
- dd takes about ~5mins for 5.4Gb disk size for reloc
-
-**TODO**
-
-* It works :p
-* Time to migrate depends on data payload sizes
-
-The Architecture described in the last section should demonstrate that the concepts of FluidCloud are technically feasible. More over the important thing is that the concepts noted in this paper describe a way of enable fluidity of services between clouds.
+Overall the PoC proofed the concepts to be working. Especially the Architecture described in the last sections should demonstrate that the concepts of FluidCloud are technically feasible. More over the important thing is that the concepts noted in this paper describe a way of enable fluidity of services between clouds.
 
 # Related Work
 
@@ -144,7 +129,6 @@ The paper [#Ward:2010] looks at InterCloud more from the federation aspect and t
 [^cimi1]: http://dmtf.org/standards/cmwg
 
 [^cdmi1]: http://cdmi.sniacloud.com
-
 
 # Conclusions and Further Work
 
@@ -176,4 +160,5 @@ The need for service relocation will become ever needed the more cloud services 
 [#Gridftp:2007]: John Bresnahan, Michael Link, Gaurav Khanna, Zulfikar Imani, Rajkumar Kettimuthu and Ian Foster. Globus GridFTP. Proceedings of the First International Conference on Networks for Grid Applications (GridNets 2007), Oct, 2007
 
 [^1]: I'm a little footnote short and stout!
+
 
