@@ -104,11 +104,11 @@ The decision for this service topology after relocation is made by the CloudCond
 
 # Evaluation
 
-The first outcome of this initial PoC was to prove that the architecture satisfies the scenarios described in this paper. The separation between the CloudConduit and the Broker was found useful as several technologies for the Broker exist. Furthermore the Broker can be used to establish Viaduct(s) as this could be made up out of virtual machines, which each could host a Migrator. The overall architecture therefore has been proven to satisfy the needs.
+The first outcome of this initial PoC was to prove that the architecture satisfies the scenarios described in this paper. The separation between the CloudConduit and the Broker was found useful as several technologies for the Broker exist. Furthermore the Broker can be used to establish Viaduct(s) as this could be made up out of virtual machines, which each could host a Migrator (Note: the migrators were executed in sequential order). The overall architecture therefore has been proven to satisfy the needs.
 
-Second outcome was to have initial numbers about the runtime of a relocation process. In the end it will be crucial that the runtime is minimised and possibly point towards if actual online relocation can be achieved. For the relocation of the service instance in the PoC, a total downtime of 10 minutes was needed. The relocation was performed over a 1 Gb Ethernet network.
+Second outcome was to have initial numbers about the runtime of a relocation process. In the end it will be crucial that the runtime is minimised and possibly point towards if actual online relocation can be achieved. For the relocation of the service instance in the PoC, a total downtime of approximately 10 minutes was needed. The relocation was performed over a 1 Gb Ethernet network.
 
-This combines the time for stopping the virtual machine and relocating it (seconds for stop, 5 minutes for relocation of the virtual machine image of 5.4GB), the time to move the data from the block storage to the VM ( 1 minute for 512MB test file with) and finally the reconfiguration using (10 seconds to copy the script and execute it). 
+This combines the time for stopping the virtual machine and relocating it (seconds for stop, approximately 5 minutes for relocation of the virtual machine image of 5.4GB), the time to move the data from the block storage to the VM (approximately 1 minute for 512MB test file within) and finally the reconfiguration using (approximately 10 seconds to copy the script and execute it). 
 
 Times fluctuated over several runs of the relocation. In general the time-to-relocation using this PoC will depend on the data payload sizes of the virtual machine image and the data in the block storage.
 
