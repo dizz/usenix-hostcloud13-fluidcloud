@@ -186,27 +186,27 @@ The Framework used for this PoC will be released and supported under an Open Sou
 
 
 
-[#Grance:2011]: tbd
+[#Grance:2011]: Grance, P. M. (2011). The NIST Definition of Cloud Computing. NIST special publication.
 
-[#Elson:2008]: "Handling Flash Crowds from Your Garage"
+[#Elson:2008]: Elson, J. (2008). Handling flash crowds from your garage. USENIX 2008 Annual Technical Conference. 
 
-[#Mizgier:2010]: tbd
+[#Mizgier:2010]: Mizgier, H. K. (2010). System to system migration for improving interoperability. Information Technology .
 
-[#Ward:2010]: C. tbd
+[#Ward:2010]: C. Ward, N. A. (2010). Workload Migration into Clouds – Challenges, Experiences, Opportunities. 2010 IEEE 3rd International Conference on Cloud Computing. IEEE.
 
-[#Plummer:2011]: Daryl C. tbd
+[#Plummer:2011]: Daryl C. Plummer, B. J. (2011). Cloud Services Brokerage Is Dominated by Three Primary Roles. Gartner.
 
-[#BernsteinEtAl:2009]: Bernstein, Ludvigson, Sankar, Diamond, & Morrow, 2009
+[#BernsteinEtAl:2009]: Bernstein, D., Ludvigson, E., Sankar, K., Diamond, S., & Morrow, M. (2009). Blueprint for the Intercloud - Protocols and Formats for Cloud Computing Interoperability. Internet and Web Applications and Services, 2009. 
 
-[#Bernstein:2010]: D. Bernstein, 2010
+[#Bernstein:2010]: D. Bernstein, D. V. (2010). Intercloud Exchanges and Roots Topology and Trust Blueprint.
 
-[#Demchenko:2012]: Y. Demchenko, 2012
+[#Demchenko:2012]: Y. Demchenko, M. X. (2012). Intercloud Architecture for Interoperability and Integration. 
 
-[#Alliance:2012]: ODCA
+[#Alliance:2012]: Alliance, O. D. (2012). Long Distance Workload Migration. ODCA.
 
-[#Petcu:2011]: Dana's interop paper
+[#Petcu:2011]: Petcu, D. (2011). Portability and interoperability between clouds: challenges and case study. Towards a Service-Based Internet , 62-74.
 
-[#Jr:2011]: JR? From dallas?
+[#Jr:2011]: Jr, S. O. (2011). The problem with cloud-computing standardization. Computer magazine , 13-16.
 
 [#Armstrong:2012]: D. Armstrong, D. Espling, J. Tordsson, K. Djemame, and E. Elmroth. Runtime Virtual Machine Recontextualization for Clouds. Euro-Par 2012 Workshops, Lecture Notes of Compouting Science, Vol. 7640, Springer-Verlag, pp. 567 - 576, 2012.
 
