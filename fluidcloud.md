@@ -7,17 +7,15 @@ TODOs:
 
 # Introduction
 
-Today, cloud computing [#Grance:2011] service instances have little means to easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players.
-
-Currently, cloud standards exist but most are not widely adopted, especially *de jure* style. *De facto* style standards such as Amazon EC2 has somewhat more adoption. Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see Related Work). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad-hoc  efforts are spent by the service instance owners.
+Today, cloud computing [#Grance:2011] service instances cannot easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players. If where adopted, *De jure* standards are not as widely adopted as *de facto*  standards (e.g.Amazon EC2). Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see Related Work). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad-hoc  efforts are spent by the service instance owners.
 
 The proposed solution is the FluidCloud framework which aims to make relocating services instances easier with more automation. From this work a number of research and engineering challenges arise including data optimisation, runtime architecture adaptation, goal-oriented service instance relocation.
 
 # A Problem in the Cloud?
 
-Cloud service instances remain locked under the control of the service provider. FluidCloud will liberate these instances. Having the ability for a cloud service instance to easily and seamlessly move from one provider to another will bring advantages to any cloud service owner. It would bring more freedom to cloud service owners, instances, including their application and data. Essentially, it will bring service instance "movement rights" to the cloud. However there is no encompassing means to accomplish this.
+Cloud service instances remain locked under the control of the service provider. FluidCloud will liberate these instances. Having the ability for a cloud service instance to easily and seamlessly move from one provider to another will bring advantages to any cloud service owner. It would bring more freedom to cloud service owners and their instances. Essentially, it will bring service instance "movement rights" to the cloud. However there is no encompassing means to accomplish this.
 
-FluidCloud is something that fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl:2009], [#Bernstein:2010], [#Demchenko:2012] where the genesis and progression of it from singular and multi-cloud ecosystem is stated. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Rackspace, and CloudSigma. 
+FluidCloud fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl:2009], [#Bernstein:2010], [#Demchenko:2012] where the genesis and progression of it from singular and multi-cloud ecosystem is stated. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Rackspace, and CloudSigma. 
 
 ## The FluidCloud Concept
 
