@@ -17,25 +17,25 @@ The proposed solution is the FluidCloud framework which aims to make relocating 
 
 Cloud service instances remain locked under the control of the service provider. FluidCloud will liberate these instances. Having the ability for a cloud service instance to easily and seamlessly move from one provider to another will bring advantages to any cloud service owner. It would bring more freedom to cloud service owners, instances, including their application and data. Essentially, it will bring service instance "movement rights" to the cloud. However there is no encompassing means to accomplish this.
 
-FluidCloud is something that fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl:2009], [#Bernstein:2010], [#Demchenko:2012] as well in a notable online conversation[^1] where James Urquhart, Cisco's Cloud Programs and Communications Manager, clearly outlined the genesis and progression of it from singular and multi-cloud ecosystem we see today. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Google App Engine, CloudFoundry, OpenShift, Rackspace, Heroku and CloudSigma. 
+FluidCloud is something that fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl:2009], [#Bernstein:2010], [#Demchenko:2012] where the genesis and progression of it from singular and multi-cloud ecosystem is stated. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Rackspace, and CloudSigma. 
 
 ## The FluidCloud Concept
 
 Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequentially adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between providers. The FluidCloud concept addresses multiple benefits -- including:
 
-* **Enhancing the InterCloud**:
+**Enhancing the InterCloud**:
 FluidCloud advances the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the an open source framework.
 
-* **Economical**:
+**Economical**:
 FluidCloud can suggest new compatible service providers and based on economical differentiators and should the service owner want it; relocate their service instance to the suggested target provider.
 
-* **Regulatory**:
+**Regulatory**:
 If a running cloud service instance is in an unrecognised or risky geographic region, a region where data privacy policies are incompatible or change to being incompatible then to comply with regulatory policy or law, the service provider can use FluidCloud to relocate that service instance at risk.
 
-* **Liberation**:
+**Liberation**:
 Cloud service developers and operators own their application and are responsible for end-user data. They should have right of movement for those services instances and the efficient means to enable them.
 
-* **Positive Market Disruption**.
+**Positive Market Disruption**.
 By having the ability to relocate a service instance from one provider to another, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation.
 
 ## FluidCloud Scenarios
@@ -61,20 +61,16 @@ Developers and providers of cloud brokerage services and software could consider
 
 For such scenarios, as described above, to be technically realised there is a set of missing technologies. FluidCloud fills these gaps by providing the following key contributions:
 
-* **Service Instance Relocation** -- *Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider*. 
-There are two types of cloud services that FluidCloud will support and enable relocation for: IaaS and PaaS based services. This entails that IaaS entities such as virtual machines and virtual storage devices (block and object storage) will need to be relocated. For PaaS, entities such as the service-components with packaged or compiled source code and possibly the data will need to be relocated. The decision to relocate will be something initiated by the owner of the service (e.g. through a user interface). The relocation may also be initiated by a Cloud Broker who has user-supplied policies to dictate under what conditions (such as costs) a service should be relocated.
+**Service Instance Relocation** -- *Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider*. 
+There are two types of cloud services that FluidCloud will support and enable relocation for: IaaS and PaaS based services. The decision to relocate will be something initiated by the owner of the service (e.g. through a user interface).
 
-* **Service Instance Adaptation** - *The Conversion, transformation and movement of the service and its related data*.
-Related to relocating IaaS and PaaS services are the potential service adaptations that need to take place. Services comprise of service-components (For example a web server, database), which are essentially applications. Those service-components might need to be changed when relocated. For example VM images may need to be converted 
-for running on a different hypervisor and the resumed
-VM may need to be re-contextualized as its environment 
+**Service Instance Adaptation** - *The Conversion, transformation and movement of the service and its related data*.
+Related to relocating IaaS and PaaS services are the potential service adaptations that need to take place. Parts of the service might need to be adapted when relocated. For example virtual machine may need to be re-contextualized as its environment 
 changes [#Armstrong:2012]. If we turn our attention to the PaaS area
-is the adaptation of applications written for a certain
-target platform."
+is the adaptation of applications written for a certain target platform.
 
-
-* **Data Relocation** - *Relocation, migration, transcoding, transformation and conversion of the data belonging to the service*.
-In FluidCloud a service is defined as a set of service-components and the data belonging to the service. Relocation of data fundamentally means moving bits and bytes. Currently tools such as GlobusOnline[^1] provide a service for easy transferring data between Grid sites using the proven GridFTP protocol [#Gridftp:2007], which allows for fast and reliable data transfers. Other solutions like the Zeta File System (ZFS) send/receive feature allow for snapshotting a dataset in constant time and allow easy relocation. Certainly upcoming technologies like Software Defined Networking can help when data path are needed on-demand to be established between to providers. 
+**Data Relocation** - *Relocation, migration, transformation and conversion of the data belonging to the service*.
+Relocation of data fundamentally means moving bits and bytes. Currently tools such as GlobusOnline[^1] provide a service for easy transferring data between Grid sites using the proven GridFTP protocol [#Gridftp:2007]. Certainly technologies like Software Defined Networking can help when data paths are needed on-demand to be established between two providers. 
 
 # Architecture
 
@@ -118,7 +114,7 @@ The CloudConduit has capabilities to processes requests for service instances to
 
 The Broker does now have the information to instantiate the appropriate Migrators that make up the Viaduct. The Migrators now take care of the actual relocation and topology change within the service instance.
 
-For this PoC the setup has been done within in one Data center but with two different platforms. The source service provider is realized using OpenStack while the target side is SmartOS. The trigger for the relocation is done based on an evaluation of both platforms. It shows that an virtual machine on the SmartOS platform has a significantly higher IO throughput (60.2Mb/s on KVM virtual machine under SmartOS and 43.2Mb/s on KVM virtual image under OpenStack measuered with *dd* on identical hardware):
+For this PoC the setup has been done within in one Data center but with two different platforms. The source service provider is realized using OpenStack while the target side is SmartOS. The trigger for the relocation is done based on an evaluation of both platforms. It shows that an virtual machine on the SmartOS platform has a significantly higher IO throughput (60.2Mb/s on KVM virtual machine under SmartOS and 43.2Mb/s on KVM virtual image under OpenStack measured with *dd* on identical hardware):
 
 Based on this evaluation, a simple node.js application is deployed with an virtual machine within OpenStack is to be relocated to SmartOS. This virtual machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
 
@@ -133,12 +129,6 @@ The decision for this service topology after relocation is made by the CloudCond
  * The virtual machine image Migrator will pause the virtual machine on the OpenStack side and create a new virtual machine on the SmartOS side. Both machines are than booted using an prepared ubuntu iso image[^os1]. After booting the data is copied over using *netcat* and the *dd* command. After copying the virtual machine on the SmartOS platform can be booted.
  * The Relocator for the OpenStack block storage copies the data from the block storage device in OpenStack cinder onto the Filesystem of the virtual machine running on KVM in a SmartOS zone. This is done with the help of the *ssh* protocol.
  * Reconfiguration of the node.js application's configuration file is based on regular expressions and a simple Python script. It changes the paths for node.js interpreter and the path to the data.
-
-This then overall demonstrates the earlier described process:
-
- 1. the CloudConduit gets a request to migrate an application
- 2. an application (*application versus service instance*) is a set of related VMs that make up the service instance
- 3. each of those VMs may have associated resources - CloudConduit must determine these
 
 [^os1]: In this case the virtual machine within OpenStack was initially booted from a volume instead of an image.
 
@@ -161,17 +151,15 @@ The Architecture described in the last section should demonstrate that the conce
 
 Standards organisation defined interfaces such as OCCI[^1], CIMI[^1] or CDMI[^1] might realise interoperability from a user perspective but they do not solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors will not interoperate, in part because they do not use the same data formats. 
 
-Adapter libraries enabled the means to manage multiple cloud offerings, The most prominent of these are libcloud[^1], fog.io[^1] and jClouds[^1]. There are commercial products available currently that aim to easily use multiple clouds at runtime. Such examples include RightScale[^1] and Enstratus[^1]. However these solutions only manage the lifecycle on each various cloud service provider's platform and they do not allow for the relocation of cloud service instances between providers.
+Adapter libraries enabled the means to manage multiple cloud offerings, The most prominent of these are libcloud[^1], fog.io[^1], RightScale[^1], Enstratus[^1] and jClouds[^1].
 
-There are quite a number of Platform as a Service (PaaS) offerings available today. Most PaaS offerings tend to support multiple languages and a number of supporting services. Examples of these include Heroku, Windows Azure, Red Hat OpenShift, VMware CloudFoundry and Google App Engine. These platforms can be found to support Java, Python, Erlang, Node.js and other languages. What is important to consider with all of these offerings is the degree of lock-in that each offering brings to its users. The majority of the PaaS offerings leverage the existing interoperability work that each language (and its standard libraries - e.g. WSGI for Python) and supporting services (e.g. MySQL, RabbitMQ) already has. However, this is not uniform across all PaaS offerings.
+There are quite a number of Platform as a Service (PaaS) offerings available today.  Including Heroku, Red Hat OpenShift, CloudFoundry and Google App Engine. The majority of the PaaS offerings leverage the existing interoperability work that each language (and its standard libraries - e.g. WSGI for Python) and supporting services (e.g. MySQL, RabbitMQ) already have. However, this is not uniform across all PaaS offerings.
 
-The Open Data Centre Alliance released a report [#Alliance:2012] on long distance service instance relocation. Noted within is that relocation of workload possible but “[…] migrations occur between disparate data centres of the same cloud provider […]” most of the time. Also noted within is the fact that the “[…] abstraction of a PaaS workload” is not yet finalised and that more collaborative efforts on this issue need to be made. So here the most obvious issues become clear: relocation is possible but mostly within service provider’s domain and that inter-domain (InterCloud) relocation on IaaS and PaaS level needs more research.
+The Open Data Centre Alliance released a report [#Alliance:2012] on long distance service instance relocation. Noted within is that relocation of workload possible but “[...] migrations occur between disparate data centres of the same cloud provider [...]” most of the time. So here the most obvious issues becomes clear: relocation is possible but mostly within service provider’s domain and that inter-domain (InterCloud) relocation on IaaS and PaaS level needs more research.
 
-Also in [#Mizgier:2010] a model and means to evaluate the migration of one system to another. It notes that aspects related to the migration of data are on of the biggest challenge and, as particular to this work, where data model conversion must be carried out.
+Currently available software solutions for data management exists – such as: Cloudant[^1], Xeround[^1], MongoLab[^1] or Amazon S3[^1]. But currently they lack the ability to convert data between the service instances, or relocate data.
 
-Currently available software solutions for data management exists – such as: Cloudant[^1], Xeround[^1], MongoLab[^1] or Amazon S3[^1]. But currently they lack the ability to convert data between the service instances, or relocate data. It is noted that services like Cloudant offer means of distributing data location based. Some means of dealing with the relocation of IaaS-based services (composed of virtual machines) is available today.
-
-The paper [#Ward:2010] looks at InterCloud more from the federation aspect and the authors describe their architectural vision of that InterCloud. One important aspect that the authors do note is the importance of cloud brokers in their architecture. The concept of cloud brokerage is compliant with the definition provider by Gartner of Cloud Services Brokerage [#Plummer:2011] offering aggregation, integration and customisation, the three primary roles expected of such a cloud service broker.  This is further refined in the NIST Definition of Cloud Computing [#Grance:2011].
+The paper [#Ward:2010] looks at InterCloud more from the federation aspect and the authors describe their architectural vision of that InterCloud. One important aspect that the authors do note is the importance of cloud brokers in their architecture [#Plummer:2011] supported by [#Grance:2011].
 
 # Conclusions and Further Work
 
@@ -181,8 +169,6 @@ The need for service relocation will become ever needed the more cloud services 
 [#Grance:2011]: Grance, P. M. (2011). The NIST Definition of Cloud Computing. NIST special publication.
 
 [#Elson:2008]: Elson, J. (2008). Handling flash crowds from your garage. USENIX 2008 Annual Technical Conference. 
-
-[#Mizgier:2010]: Mizgier, H. K. (2010). System to system migration for improving interoperability. Information Technology .
 
 [#Ward:2010]: C. Ward, N. A. (2010). Workload Migration into Clouds – Challenges, Experiences, Opportunities. 2010 IEEE 3rd International Conference on Cloud Computing. IEEE.
 
