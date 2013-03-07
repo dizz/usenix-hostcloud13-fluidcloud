@@ -120,7 +120,7 @@ Overall the PoC proved the concepts to be working. In particular the implemented
 
 # Related Work
 
-Standards organisation defined interfaces such as OCCI[^occi1], CIMI[^cimi1] or CDMI[^cdmi1] might realise interoperability from a user perspective but they do not solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors will not interoperate, in part because they do not use the same data formats. 
+Standards organisation defined interfaces such as OCCI[^occi1] [#OCCI:2012], CIMI[^cimi1] or CDMI[^cdmi1] which might realise interoperability but they do not necessarily solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors will not interoperate, in part because they do not use the same data formats. 
 
 Adapter libraries enabled the means to manage multiple cloud offerings, The most prominent of these are Apache libcloud, fog.io, RightScale, Enstratus and jClouds.
 
@@ -166,6 +166,8 @@ The need for service relocation will become ever needed the more cloud services 
 [#Armstrong:2012]: D. Armstrong, D. Espling, J. Tordsson, K. Djemame, and E. Elmroth. Runtime Virtual Machine Recontextualization for Clouds. Euro-Par 2012 Workshops, Lecture Notes of Compouting Science, Vol. 7640, Springer-Verlag, pp. 567 - 576, 2012.
 
 [#Gridftp:2007]: John Bresnahan, Michael Link, Gaurav Khanna, Zulfikar Imani, Rajkumar Kettimuthu and Ian Foster. Globus GridFTP. Proceedings of the First International Conference on Networks for Grid Applications (GridNets 2007), Oct, 2007
+
+[#OCCI:2012]: A. Edmonds, T. Metsch, A. Papaspyrou, and A. Richardson, “Toward an Open Cloud Standard,” IEEE Internet Computing, vol. 16, no. 4, Jul. 2012.
 
 [^1]: I'm a little footnote short and stout!
 
