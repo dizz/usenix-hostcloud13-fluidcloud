@@ -19,22 +19,7 @@ FluidCloud fits within the soon future cloud. A reasonable view of this future c
 
 ## The FluidCloud Concept
 
-Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequentially adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between providers. The FluidCloud concept addresses multiple benefits -- including:
-
-**Enhancing the InterCloud**:
-FluidCloud advances the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the an open source framework.
-
-**Economical**:
-FluidCloud can suggest new compatible service providers and based on economical differentiators and should the service owner want it; relocate their service instance to the suggested target provider.
-
-**Regulatory**:
-If a running cloud service instance is in an unrecognised or risky geographic region, a region where data privacy policies are incompatible or change to being incompatible then to comply with regulatory policy or law, the service provider can use FluidCloud to relocate that service instance at risk.
-
-**Liberation**:
-Cloud service developers and operators own their application and are responsible for end-user data. They should have right of movement for those services instances and the efficient means to enable them.
-
-**Positive Market Disruption**.
-By having the ability to relocate a service instance from one provider to another, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation.
+Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequentially adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between providers. The FluidCloud concept addresses multiple benefits. FluidCloud will bring **Liberation** to cloud service developers and operators own their application and are responsible for end-user data. They should have right of movement for those services instances and the efficient means to enable them. It will **Enhance the InterCloud** by advancing the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the an open source framework. It will make it more **Economical** by suggesting new compatible service providers and based on economical differentiators. Should the service owner want it; relocate their service instance to the suggested target provider. **Regulatory** control can be supplied so if a running cloud service instance is in an unrecognised or risky geographic region, the service provider can use FluidCloud to relocate that service instance at risk. Finally, with ease of relocation, **Positive Market Disruption**, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation.
 
 ## FluidCloud Scenarios
 
