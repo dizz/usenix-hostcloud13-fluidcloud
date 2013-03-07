@@ -78,7 +78,7 @@ In FluidCloud a service is defined as a set of service-components and the data b
 
 # Architecture
 
-Core to realising FluidCloud are the following components: The ‘CloudConduit’ handles and coordinates the overall relocation (possibly partial) of the service instance. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. The following diagram shows the proposed high-level proposal:
+Core to realising FluidCloud are the following components: The ‘CloudConduit’ handles and coordinates the overall relocation (possibly partial) of the service instance. Viaducts form a ‘path’ between cloud providers (if needed with underlying support of the network). The CloudConduit is responsible for setting up the ‘Viaduct’. Within Viaducts, ‘Migrators’ are placed on these to adapt the Application, it’s environment and if necessary data as it relocates through the Viaduct. In order to relocate a service efficiently the CloudConduit can establish multiple Viaducts. The CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement providers the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process. Figure 1 shows the proposed high-level proposal.
 
 ![Conceptual Overview][]
 
@@ -108,7 +108,7 @@ A software developer has developer an service on his own VM in an (Private) Clou
 
 # Implementation
 
-The first proof of concept of the conceptual architecture for IaaS based relocation has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue. The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
+The first proof of concept of the conceptual architecture for IaaS based relocation has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue (See Figure 2). The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
 ![Architectural Overview][]
 
@@ -124,7 +124,7 @@ TODO: insert dd command output here. - @Andy do we want it here?
 
 Based on this evaluation, a simple node.js application is deployed with an virtual machine within OpenStack is to be relocated to SmartOS. This virtual machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
 
-After relocation the virtual machine will be running on the SmartOS platform. The data within the block storage will be relocated whereas the data in the object storage will stay where it is (could be the use case of using an external provider such as Amazon's S3). This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology although is done automatically. The service topology before and after relocation is shown in the following diagram:
+After relocation the virtual machine will be running on the SmartOS platform. The data within the block storage will be relocated whereas the data in the object storage will stay where it is (could be the use case of using an external provider such as Amazon's S3). This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology although is done automatically. The service topology before and after relocation is shown in the Figure 3:
 
 ![Service before and after relocation][]
 
