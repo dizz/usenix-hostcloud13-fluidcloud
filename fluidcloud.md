@@ -3,6 +3,7 @@ Base Header Level: 3
 TODOs:
 
 * Page 5: The formulation "noted within" used as several places seems a bit odd to me.
+* Abstract should highlight How to intrinsically enable and fully automate relocation of service instances between clouds?
 
 # Introduction
 
