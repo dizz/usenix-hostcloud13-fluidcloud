@@ -108,6 +108,9 @@ A software developer has developer an service on his own VM in an (Private) Clou
 
 # Implementation
 
+TODOs:
+* <intel_ostb> -> inter_fc -> <intel_sdc>* using dd, netcat for conversion
+
 The first proof of concept of the conceptual architecture has been implemented using the Python programming language. Each of the components is a standalone process which eventually communicate with each other using a messaging queue. The prototype uses the Advanced Message Queuing Protocol (AMQP) implementation by RabbitMQ. 
 
 ![Architectural Overview][]
@@ -145,6 +148,11 @@ This then overall demonstrates the earlier described process:
  3. each of those VMs may have associated resources - CloudConduit must determine these
 
 # Evaluation
+
+TODOs:
+* add in TCP/IP stack overhead and processing time of image, volume and service reconfig
+* 2GB volume, 512 VM size, over 1G ethernet
+* update the dd numbers
 
 The smartos based zones (kernel level virt):
 
