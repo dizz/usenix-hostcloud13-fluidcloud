@@ -26,7 +26,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-03-07 15:30:27 +0000</string>
+	<string>2013-03-07 15:33:22 +0000</string>
 	<key>Modifier</key>
 	<string>Andy Edmonds</string>
 	<key>NotesVisible</key>
@@ -1300,6 +1300,31 @@ path}</string>
 			<key>GraphicsList</key>
 			<array>
 				<dict>
+					<key>Class</key>
+					<string>LineGraphic</string>
+					<key>ID</key>
+					<integer>22</integer>
+					<key>Points</key>
+					<array>
+						<string>{157.3386869430542, 21.052215576171875}</string>
+						<string>{158, 142}</string>
+					</array>
+					<key>Style</key>
+					<dict>
+						<key>stroke</key>
+						<dict>
+							<key>HeadArrow</key>
+							<string>0</string>
+							<key>Legacy</key>
+							<true/>
+							<key>TailArrow</key>
+							<string>0</string>
+							<key>Width</key>
+							<real>7</real>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
 					<key>Bounds</key>
 					<string>{{415, 73.25}, {24, 13}}</string>
 					<key>Class</key>
@@ -1318,7 +1343,7 @@ path}</string>
 					<key>ID</key>
 					<integer>21</integer>
 					<key>Rotation</key>
-					<real>90</real>
+					<real>270</real>
 					<key>Shape</key>
 					<string>Rectangle</string>
 					<key>Style</key>
