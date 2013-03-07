@@ -3,7 +3,7 @@ Base Header Level: 3
 TODOs:
 
 * Page 5: The formulation "noted within" used as several places seems a bit odd to me.
-* Abstract should highlight 
+* Abstract should highlight: more arguing about why it is important to be able to move things around
 
 # Introduction
 
