@@ -108,6 +108,10 @@ The decision for this service topology after relocation is made by the CloudCond
 
 # Evaluation
 
+architecture
+prove POC works
+reasonable time for relocation
+
 TODOs:
 * add in TCP/IP stack overhead and processing time of image, volume and service reconfig
 * 2GB volume, 512 VM size, over 1G ethernet
