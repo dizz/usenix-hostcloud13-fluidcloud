@@ -84,7 +84,7 @@ The CloudConduit has capabilities to processes requests for relocating service i
 
 The Broker now has the information to instantiate the appropriate Migrators that make up the Viaduct. The Migrators take care of the actual relocation and topology change of the service instance.
 
-For this implementation has been deployed within in one Data centre but with two different platforms. The trigger for the relocation is done based on a performance evaluation of both platforms. A virtual machine on the SmartOS platform has a significantly higher I/O throughput (60.2Mb/s on KVM virtual machine under SmartOS and 43.2Mb/s on KVM virtual image under OpenStack measured with *dd* on identical hardware).
+For this implementation has been deployed within in one Data centre but with two different platforms. The trigger for the relocation is done based on a performance evaluation of both platforms. A virtual machine on the SmartOS platform has a significantly higher I/O throughput (60.2MB/s on KVM virtual machine under SmartOS and 43.2MB/s on KVM virtual image under OpenStack measured with *dd* on identical hardware).
 
 Based on this evaluation, a simple node.js application has been deployed with an virtual machine within OpenStack is to be relocated to SmartOS. This virtual machine has block storage attached to it through an OpenStack cinder volume. The node.js also makes use of OpenStack Swift object storage. 
 
