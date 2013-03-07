@@ -170,20 +170,7 @@ The paper [#Ward:2010] looks at InterCloud more from the federation aspect and t
 
 # Conclusions and Further Work
 
-**TODO**
-
-what follows from the solution
-
-* investigate the area of live relocation etc.
- * this is a large challenge - quote vmotion limitations
-* investigate data payload minimisation
-* contribute to the intercloud
-* how SDN can play a role
-* work will continue
-  * targets are….
-  
-The Framework used for this PoC will be released and supported under an Open Source License (Apache 2.0) at: github.com/??? …
-
+The need for service relocation will become ever needed the more cloud services are used and the more that service owners move their service to the public cloud. FluidCloud will present a means for this to be supported and there is a prototype framework available. This framework will be released and supported under an Open Source license. There are further research and engineering areas to be investigated including live service instance relocation between data centres, data payload minimisation, service decomposition over multiple target service providers and the leverage of software-defined networking technologies.
 
 
 [#Grance:2011]: Grance, P. M. (2011). The NIST Definition of Cloud Computing. NIST special publication.
