@@ -137,8 +137,8 @@ Currently available software solutions for data management exists – such as: C
 The paper [#Ward:2010] looks at InterCloud more from the federation aspect and the authors describe their architectural vision of that InterCloud. One important aspect that the authors do note is the importance of cloud brokers in their architecture [#Plummer:2011] supported by [#Grance:2011].
 
 [^occi1]: http://www.occi-wg.org
-[^cimi]: http://dmtf.org/standards/cmwg
-[^cdmi]: http://cdmi.sniacloud.com
+[^cimi1]: http://dmtf.org/standards/cmwg
+[^cdmi1]: http://cdmi.sniacloud.com
 # Conclusions and Further Work
 
 The need for service relocation will become ever needed the more cloud services are used and the more that service owners move their service to the public cloud. FluidCloud will present a means for this to be supported and there is a prototype framework available. This framework will be released and supported under an Open Source license. There are further research and engineering areas to be investigated including live service instance relocation between data centres, data payload minimisation, service decomposition over multiple target service providers and the leverage of software-defined networking technologies.
