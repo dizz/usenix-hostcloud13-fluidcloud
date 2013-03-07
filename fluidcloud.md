@@ -46,9 +46,9 @@ Relocation of data fundamentally means moving bits and bytes. Currently tools su
 
 Core to realising FluidCloud are the following components shown in the proposed logical architecture.
 
-![Conceptual Overview][]
+![Conceptual Architecture][]
 
-[Conceptual Overview]: img/arch_overview.png "Architectural Overview" width=200px
+[Conceptual Architecture]: img/arch_overview.png "Architectural Overview" width=200px
 
 The key components are the following:
 
@@ -76,9 +76,9 @@ A software developer has developer an service on his own VM in an (Private) Clou
 
 The first proof of concept of the logical architecture for IaaS-based relocation has been implemented using the Python programming language. Each of the components is a standalone process which communicate with each other using asynchronous messaging (See Figure 2). The prototype uses the Advanced Message Queuing Protocol (AMQP). 
 
-![Architectural Overview][]
+![Implemented Architecture][]
 
-[Architectural Overview]: img/fc-impl-1.png "Architectural Overview" width=200px
+[Implemented Architecture]: img/fc-impl-1.png "Architectural Overview" width=200px
 
 The CloudConduit has capabilities to processes requests for relocating service instances. When such a relocation is triggered it inspects the service instances for sub-components (sub-services) and their dependencies. This is done through the RESTful Cloud APIs supported by both cloud providers, OpenStack as source and SmartOS as destination, in this case. Based on the inspection it creates a set of tasks which need to be executed. Currently, the tasks are executed in sequential order. Later on the scheduling of these tasks may become more complex.
 
@@ -90,9 +90,9 @@ Based on this evaluation, a simple node.js application has been deployed with an
 
 After relocation the virtual machine will be running on the SmartOS platform. The data within the block storage will be relocated, whereas the data in the object storage will stay where it is, indeed the object storage could be hosted elsewhere e.g. Amazon S3. This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology although is done automatically. The service topology before and after relocation is shown in the Figure 3:
 
-![Service before and after relocation][]
+![Service Instance Before and after Relocation][]
 
-[Service before and after relocation]: img/b+a.png "The VM before and after relocation" width=200px
+[Service Instance Before and after Relocation]: img/b+a.png "The VM before and after relocation" width=200px
 
 The decision for this service topology after relocation is made by the CloudConduit and should be guided by service owner policies. Overall, to relocate this simple node.js application the following Migrators were placed on the Viaduct:
 
@@ -104,11 +104,15 @@ The decision for this service topology after relocation is made by the CloudCond
 
 # Evaluation
 
-The first outcome of this initial PoC was to proof that the Architecture satisfying the scenarios described in this paper. The distinction between the CloudConduit and the Broker was found useful as several technologies for the Broker part exist. Furthermore the Broker can be used to establish the Viaduct as this logical entity could be made up out of virtual machines which each host a Migrator. The overall architecture therefore has been proven to satisfy the needs.
+The first outcome of this initial PoC was to prove that the architecture satisfies the scenarios described in this paper. The separation between the CloudConduit and the Broker was found useful as several technologies for the Broker exist. Furthermore the Broker can be used to establish Viaduct(s) as this could be made up out of virtual machines, which each could host a Migrator. The overall architecture therefore has been proven to satisfy the needs.
 
-Second outcome was to have first numbers in hand about the runtime of a relocation process. In the end it will be crucial that the runtime is minimized and actual life/online relocation will be possible. For the relocation of the service instance in the PoC a total downtime of 10min was needed. This combines the time for stopping the virtual machine and relocating it (seconds for stop, ~5 minutes for relocation of the virtual machien image of 5.4Gb), the time to move the data from the block storage to the VM (~1min minutes for 512Mb test file with) and finally the reconfiguration using (10sec to copy the script and execute it). Times fluctuated over several runs of the relocation. General the Time to relocation using this PoC will depend on the data payload sizes of the virtual machine image and the data in the block storage.
+Second outcome was to have initial numbers about the runtime of a relocation process. In the end it will be crucial that the runtime is minimised and possibly point towards if actual online relocation can be achieved. For the relocation of the service instance in the PoC, a total downtime of 10 minutes was needed. The relocation was performed over a 1 Gb Ethernet network.
 
-Overall the PoC proofed the concepts to be working. Especially the Architecture described in the last sections should demonstrate that the concepts of FluidCloud are technically feasible. More over the important thing is that the concepts noted in this paper describe a way of enable fluidity of services between clouds.
+This combines the time for stopping the virtual machine and relocating it (seconds for stop, 5 minutes for relocation of the virtual machine image of 5.4GB), the time to move the data from the block storage to the VM ( 1 minute for 512MB test file with) and finally the reconfiguration using (10 seconds to copy the script and execute it). 
+
+Times fluctuated over several runs of the relocation. In general the time-to-relocation using this PoC will depend on the data payload sizes of the virtual machine image and the data in the block storage.
+
+Overall the PoC proved the concepts to be working. In particular the implemented architecture described in the last sections should demonstrate that the concepts of FluidCloud are technically feasible. More over, the important thing is that the concepts noted in this paper describe a way of enable fluidity of services between clouds.
 
 # Related Work
 
