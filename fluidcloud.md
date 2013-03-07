@@ -1,5 +1,9 @@
 Base Header Level: 3
 
+TODOs:
+
+* Page 5: The formulation "noted within" used as several places seems a bit odd to me.
+
 # Introduction
 
 Today, cloud computing [#Grance:2011] service instances have little means to easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players.
@@ -60,7 +64,13 @@ For such scenarios, as described above, to be technically realised there is a se
 There are two types of cloud services that FluidCloud will support and enable relocation for: IaaS and PaaS based services. This entails that IaaS entities such as virtual machines and virtual storage devices (block and object storage) will need to be relocated. For PaaS, entities such as the service-components with packaged or compiled source code and possibly the data will need to be relocated. The decision to relocate will be something initiated by the owner of the service (e.g. through a user interface). The relocation may also be initiated by a Cloud Broker who has user-supplied policies to dictate under what conditions (such as costs) a service should be relocated.
 
 * **Service Instance Adaptation** - *The Conversion, transformation and movement of the service and its related data*.
-Related to relocating IaaS and PaaS services are the potential service adaptations that need to take place. Services comprise of service-components (For example a web server, database), which are essentially applications. Those service-components might need to be changed when relocated. For example VM images need to be converted or if we turn our attention to the PaaS area is the adaptation of applications written for a certain target platform. 
+Related to relocating IaaS and PaaS services are the potential service adaptations that need to take place. Services comprise of service-components (For example a web server, database), which are essentially applications. Those service-components might need to be changed when relocated. For example VM images may need to be converted 
+for running on a different hypervisor and the resumed
+VM may need to be re-contextualized as its environment 
+changes [#Armstrong:2012]. If we turn our attention to the PaaS area
+is the adaptation of applications written for a certain
+target platform."
+
 
 * **Data Relocation** - *Relocation, migration, transcoding, transformation and conversion of the data belonging to the service*.
 In FluidCloud a service is defined as a set of service-components and the data belonging to the service. Relocation of data fundamentally means moving bits and bytes. Currently tools such as GlobusOnline[^1] provide a service for easy transferring data between Grid sites using the proven GridFTP protocol [#RFC?], which allows for fast and reliable data transfers. Other solutions like the Zeta File System (ZFS) send/receive feature allow for snapshotting a dataset in constant time and allow easy relocation. Certainly upcoming technologies like Software Defined Networking can help when data path are needed on-demand to be established between to providers. 
@@ -82,7 +92,7 @@ The key components are the following:
 * **Viaduct** - a logical path between two parties in which ‘Migrators’ are organised. All together those accomplish the task of relocating a service instance from one cloud provider to another. Migrators as well as more network-oriented components (like proxies) are ‘located’ on this path. All those components might be organised as workflows with multiple pipelines if needed. 
 * **Cloud Service Provider** - a provider of either IaaS or PaaS service types.
 
-With these concepts, FluidCloud will provide the architecture and tooling to enable the InterCloud by enabling the tree key contributions introduced earlier: Service Relocation, Service Adaptation and Data Relocation.
+With these concepts, FluidCloud will provide the architecture and tooling to enable the InterCloud by enabling the three key contributions introduced earlier: Service Relocation, Service Adaptation and Data Relocation.
 
 Service instances in the Cloud are a wide field because their implementation can use IaaS or PaaS for example. Therefore FluidCloud addresses:
 
@@ -109,7 +119,7 @@ The CloudConduit has capabilities to processes requests for service instances to
 
 The Broker does not have the information to instantiate the appropriate Migrators that make up the Viaduct. The Migrators now take care of the actual relocation and topology change within the service instance.
 
-To test this implementation the following scenario is considered. A simple node.js application is deployed with an Virtual Machine running within the Domain of OpenStack. This Virtual Machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
+To test this implementation the following scenario is considered. A simple node.js application is deployed with an virtual machine running within the Domain of OpenStack. This virtual machine has a block storage attached to it through an OpenStack Volume. The node.js also makes use of the Object Storage provided by OpenStack Swift. 
 
 (*should note that the object storage is not migrated - perhaps as it's not provided by openstack… it's S3*)
 
@@ -125,7 +135,7 @@ The decision for this service topology after relocation is made by the CloudCond
  * Relocator for the OpenStack block storage. Copies the data from the block storage device in OpenStack cinder onto the Filesystem of the VM running on KVM in SmartOS (which needs to be provisioned at this stage).
  * Reconfiguration of the node.js application's configuration file based on regular expressions. Change paths for node.js interpreter, and network configuration needed (IP of OpenStack Swift instance).
 
-When the relocation of the data parts (the VM image) is accomplished the Broker restarts the Virtual Machine on the target side.
+When the relocation of the data parts (the VM image) is accomplished the Broker restarts the virtual machine on the target side.
 
 This then overall demonstrates the earlier described process:
 
@@ -144,7 +154,7 @@ The Architecture described in the last section should demonstrate that the conce
 
 # Related Work
 
-Standards organisation defined interfaces such as OCCI[^1], CIMI[^1] or CDMI[^1] might realise interoperability from a user perspective but they do not solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discuss in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors won’t interoperate, in part because they don’t use the same data formats. 
+Standards organisation defined interfaces such as OCCI[^1], CIMI[^1] or CDMI[^1] might realise interoperability from a user perspective but they do not solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors will not interoperate, in part because they do not use the same data formats. 
 
 Adapter libraries enabled the means to manage multiple cloud offerings, The most prominent of these are libcloud[^1], fog.io[^1] and jClouds[^1]. There are commercial products available currently that aim to easily use multiple clouds at runtime. Such examples include RightScale[^1] and Enstratus[^1]. However these solutions only manage the lifecycle on each various cloud service provider's platform and they do not allow for the relocation of cloud service instances between providers.
 
@@ -154,7 +164,7 @@ The Open Data Centre Alliance released a report [#Alliance:2012] on long distanc
 
 Also in [#Mizgier:2010] a model and means to evaluate the migration of one system to another. It notes that aspects related to the migration of data are on of the biggest challenge and, as particular to this work, where data model conversion must be carried out.
 
-Currently available software solutions for data management exists – such as: Cloudant[^1], Xeround[^1], MongoLab[^1] or Amazon S3[^1]. But currently they lack the ability to convert data between the service instances, or relocate data. It is noted that services like Cloudant offer means of distributing data location based. Some means of dealing with the relocation of IaaS-based services (composed of Virtual Machines) is available today.
+Currently available software solutions for data management exists – such as: Cloudant[^1], Xeround[^1], MongoLab[^1] or Amazon S3[^1]. But currently they lack the ability to convert data between the service instances, or relocate data. It is noted that services like Cloudant offer means of distributing data location based. Some means of dealing with the relocation of IaaS-based services (composed of virtual machines) is available today.
 
 The paper [#Ward:2010] looks at InterCloud more from the federation aspect and the authors describe their architectural vision of that InterCloud. One important aspect that the authors do note is the importance of cloud brokers in their architecture. The concept of cloud brokerage is compliant with the definition provider by Gartner of Cloud Services Brokerage [#Plummer:2011] offering aggregation, integration and customisation, the 3 primary roles expected of such a cloud service broker.  This is further refined in the NIST Definition of Cloud Computing [#Grance:2011].
 
@@ -198,7 +208,8 @@ The Framework used for this PoC will be released and supported under an Open Sou
 
 [#Jr:2011]: JR? From dallas?
 
-
+[#Armstrong:2012]: D. Armstrong, D. Espling, J. Tordsson, K. Djemame, and E. Elmroth. Runtime Virtual Machine Recontextualization for Clouds. Euro-Par 2012 Workshops, Lecture Notes of Compouting Science, Vol. 7640, Springer-Verlag, pp. 567 - 576, 2012.
 
 [^1]: I'm a little footnote short and stout!
+
 
