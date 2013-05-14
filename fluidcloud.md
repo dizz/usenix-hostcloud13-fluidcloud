@@ -4,7 +4,7 @@ Base Header Level: 3
 
 Today, cloud computing [#Grance:2011] service instances cannot easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players. When adopted, *de jure* standards are not as widely adopted as *de facto*  standards (e.g. Amazon EC2). Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see "Related Work"). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad hoc  efforts are spent by the service instance owners.
 
-The proposed solution is the FluidCloud framework which aims to make relocating services instances easier any autonomous. From this work a number of research and engineering challenges arise including data optimisation, runtime architecture adaptation, and goal-oriented service instance relocation.
+The proposed solution is the FluidCloud framework which aims to make relocating services instances easier any autonomous. From this work a number of research and engineering challenges arise including data optimization, runtime architecture adaptation, and goal-oriented service instance relocation.
 
 # A Problem in the Cloud?
 
@@ -14,9 +14,7 @@ FluidCloud fits within the soon future cloud. A reasonable view of this future c
 
 ## The FluidCloud Concept
 
-Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequently adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between providers. The FluidCloud concept addresses multiple benefits. FluidCloud will bring **liberation** to cloud service developers and operators who own services and are responsible for end-user data. They should have the option of movement for those services instances and the efficient means to enable them. It will **enhance the InterCloud** by advancing the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the open source framework. It will make it more **economical** by suggesting new compatible service providers, based on economical differentiators. And should the service owner want it relocate their service instance to the suggested target provider. **Regulatory** control can be supplied so if a running cloud service instance is in an unrecognised or risky geographic region, the service provider can use FluidCloud to relocate that service instance at risk. Finally, with ease of relocation, **positive market disruption**, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation is key.
-
-**TODO**: I'm not sure I understand the "Regulatory" bit in the last paragraph of section 2.1. I think of Regulation as being about governments or overseeing bodies setting up rules, but that doesn't seem like what this means. This seems to be about recognizing with a service is at risk? Why is this regulatory?
+Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequently adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between providers. The FluidCloud concept addresses multiple benefits. FluidCloud will bring **liberation** to cloud service developers and operators who own services and are responsible for end-user data. They should have the option of movement for those services instances and the efficient means to enable them. It will **enhance the InterCloud** by advancing the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the open source framework. It will make it more **economical** by suggesting new compatible service providers, based on economical differentiators. And should the service owner want it relocate their service instance to the suggested target provider. **Regulatory** obligations can dictate the geographical location of the service instance. If a running cloud service instance is in an unrecognized or risky geographic region, the service provider can use FluidCloud to relocate that service instance at risk. Finally, with ease of relocation, **positive market disruption**, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation is key.
 
 ## FluidCloud Scenarios
 
@@ -50,15 +48,13 @@ Core to realising FluidCloud are the following components shown in the proposed 
 
 ![Conceptual Architecture][]
 
-[Conceptual Architecture]: img/arch_overview.png "Architectural Overview" width=200px
-
-**TODO**: increase size of fig!
+[Conceptual Architecture]: img/arch_overview.png "Architectural Overview" width=220px
 
 The key components are the following:
 
 * **Service Instance** - A logical container that comprises the application and the data.
 * **CloudConduit** - Orchestrates the process, introspects the service instances (incl. topology) to be relocated. It is also responsible for the lifecycle of Migrators and setup of viaducts. The relocation is triggered with this module.
-* **Broker** - Discovers and provides both cloud provider services and Migrator facilities. Eventually it monitors and inspects the service instances. Also orchestrates the deployment of the Migrators.
+* **Broker** - Discovers and provides both cloud provider services and Migrator facilities. Eventually it monitors the service instances. Also orchestrates the deployment of the Migrators.
 * **Migrator** - These are the libraries and services for adaptation and carry out one specific task related to relocation (possibly partial) of service instances. Multiple Migrators might be needed to carry out the overall relocation.
 * **Viaduct** - A logical path between two parties in which ‘Migrators’ are organised. All together those accomplish the task of relocating a service instance from one cloud provider to another. Migrators as well as more network-oriented components (like proxies) are ‘located’ on this path. All those components might be organised as workflows with multiple pipelines if needed. 
 * **Cloud Service Provider** - A provider of either IaaS or PaaS service types.
@@ -82,11 +78,7 @@ The first proof of concept (PoC) of the logical architecture for IaaS-based relo
 
 ![Implemented Architecture][]
 
-[Implemented Architecture]: img/fc-impl-1.png "Architectural Overview" width=200px
-
-**TODO**: increase size of fig!
-
-**TODO**: As described in Section 3, one of Broker's functions is to inspect the service instances. That is inconsistent with Figure 2, where CloudConduit is responsible for the inspection.
+[Implemented Architecture]: img/fc-impl-1.png "Architectural Overview" width=220px
 
 The CloudConduit has capabilities to process requests for relocating service instances. When such a relocation is triggered it inspects the service instances for sub-components (sub-services) and their dependencies. This is done through the RESTful Cloud APIs supported by both cloud providers, OpenStack[^openstack] as source and SmartOS[^smartos] as destination, in this case. Based on the inspection it creates a set of tasks which need to be executed. Currently, the tasks are executed in sequential order. Later on the scheduling of these tasks may become more complex.
 
@@ -94,7 +86,7 @@ The Broker now has the information to instantiate the appropriate Migrators that
 
 This implementation has been deployed within one data center across two different platforms. The trigger for the relocation is done based on a performance evaluation of both platforms. A virtual machine on the SmartOS platform has a significantly higher I/O throughput (60.2MB/s on KVM virtual machine under SmartOS and 43.2MB/s on KVM virtual image under OpenStack measured with *dd* on identical hardware).
 
-In this evaluation, a simple node.js service which has been deployed with a virtual machine within OpenStack[^openstack] is to be relocated to SmartOS. This virtual machine has block storage attached to it through an OpenStack cinder volume. The node.js also makes use of OpenStack Swift object storage. 
+In this evaluation, a simple node.js service which has been deployed with a virtual machine within OpenStack is to be relocated to SmartOS. This virtual machine has block storage attached to it through an OpenStack cinder volume. The node.js also makes use of OpenStack Swift object storage. 
 
 After relocation the virtual machine will be running on the SmartOS platform. The data within the block storage will be relocated, whereas the data in the object storage will stay where it is, indeed the object storage could be hosted elsewhere e.g. Amazon S3. This will demonstrate that the service topology of the service instance can change after the relocation depending on the new destination service provider. This change in topology is done automatically. The service topology before and after relocation is shown in Figure 3:
 
@@ -104,13 +96,11 @@ After relocation the virtual machine will be running on the SmartOS platform. Th
 
 ![Service Instance Before and after Relocation][]
 
-[Service Instance Before and after Relocation]: img/b+a.png "The virtual machine before and after relocation" width=200px
+[Service Instance Before and after Relocation]: img/b+a.png "The virtual machine before and after relocation" width=220px
 
 The decision for this service topology after relocation is made by the CloudConduit and should be guided by service owner policies. Overall, to relocate this simple node.js application the following Migrators were placed on the Viaduct:
 
-**TODO**: The description of the migration process in Section 4 is confusing. Since “Both machines are then booted using a prepared Ubuntu iso image”, why do you need to boot the VM again “After copying the virtual machine on the SmartOS platform”?
-
- * The virtual machine image Migrator will pause the virtual machine on the OpenStack side and create a new virtual machine on the SmartOS side. Both machines are then booted using a prepared ubuntu iso image[^os1]. After booting the data is copied over using *netcat* and the *dd* command. After copying the virtual machine on the SmartOS platform can be booted. This is one approach of many.
+ * The virtual machine image Migrator will pause the virtual machine on the OpenStack side and create a new virtual machine on the SmartOS side. Both machines are then booted using a prepared ubuntu iso image[^os1]. This is done such that the contents of the source image can be copied to the target image. The image itself is copied using the *netcat* and the *dd* command on the running ubuntu instance. After this copy operation the virtual machine on the SmartOS platform can be booted and will be an exact copy of the source VM. This is one approach of many.
  * The Relocator for the OpenStack block storage copies the data from the block storage device in OpenStack cinder onto the Filesystem of the virtual machine running on KVM in a SmartOS zone. This is done with the help of the *sftp* protocol.
  * Reconfiguration of the node.js application's configuration file is based on regular expressions and a simple Python script. It changes the paths for node.js interpreter and the path to the data.
 
@@ -152,35 +142,32 @@ The paper [#Ward:2010] looks at InterCloud more from the federation aspect and t
 
 The need for service relocation will become ever needed the more cloud services are used and the more service owners move their services to the public cloud. FluidCloud will present a means for this to be supported a prototype framework is available. This framework will be released and supported under an Open Source license. There are further research and engineering challenges to be investigated including live service instance relocation between data centers, data payload minimisation, service decomposition over multiple target service providers and the leveraging of software-defined networking technologies.
 
-**TODO**: There are a bunch of typos in the references. For instance, "Jr, S. O." should be "Ortiz Jr., S." or just Sixto Ortiz Jr. as some of the other references are spell out that way.
+[#Grance:2011]: P. M. Grance  (2011). The NIST Definition of Cloud Computing. NIST special publication.
 
-[#Grance:2011]: Grance, P. M. (2011). The NIST Definition of Cloud Computing. NIST special publication.
+[#Elson:2008]: J. Elson (2008). Handling flash crowds from your garage. USENIX 2008 Annual Technical Conference. 
 
-[#Elson:2008]: Elson, J. (2008). Handling flash crowds from your garage. USENIX 2008 Annual Technical Conference. 
+[#Ward:2010]: C. Ward (2010). Workload Migration into Clouds – Challenges, Experiences, Opportunities. 2010 IEEE 3rd International Conference on Cloud Computing. IEEE.
 
-[#Ward:2010]: C. Ward, N. A. (2010). Workload Migration into Clouds – Challenges, Experiences, Opportunities. 2010 IEEE 3rd International Conference on Cloud Computing. IEEE.
+[#Plummer:2011]: C. Daryl, B. J. Plummer (2011). Cloud Services Brokerage Is Dominated by Three Primary Roles. Gartner.
 
-[#Plummer:2011]: Daryl C. Plummer, B. J. (2011). Cloud Services Brokerage Is Dominated by Three Primary Roles. Gartner.
-
-[#BernsteinEtAl:2009]: Bernstein, D., Ludvigson, E., Sankar, K., Diamond, S., & Morrow, M. (2009). Blueprint for the Intercloud - Protocols and Formats for Cloud Computing Interoperability. Internet and Web Applications and Services, 2009. 
+[#BernsteinEtAl:2009]: D. Bernstein, E. Ludvigson, K. Sankar, S. Diamond, and M. Morrow (2009). Blueprint for the Intercloud - Protocols and Formats for Cloud Computing Interoperability. Internet and Web Applications and Services, 2009. 
 
 [#Bernstein:2010]: D. Bernstein, D. V. (2010). Intercloud Exchanges and Roots Topology and Trust Blueprint.
 
 [#Demchenko:2012]: Y. Demchenko, M. X. (2012). Intercloud Architecture for Interoperability and Integration. 
 
-[#Alliance:2012]: Alliance, O. D. (2012). Long Distance Workload Migration. ODCA.
+[#Alliance:2012]: Open Data Center Alliance (2012). Long Distance Workload Migration. ODCA.
 
-[#Petcu:2011]: Petcu, D. (2011). Portability and interoperability between clouds: challenges and case study. Towards a Service-Based Internet , 62-74.
+[#Petcu:2011]: D. Petcu (2011). Portability and interoperability between clouds: challenges and case study. Towards a Service-Based Internet , 62-74.
 
-[#Jr:2011]: Jr, S. O. (2011). The problem with cloud-computing standardization. Computer magazine , 13-16.
+[#Jr:2011]: S. Ortiz Jr. (2011). The problem with cloud-computing standardization. Computer magazine , 13-16.
 
 [#Armstrong:2012]: D. Armstrong, D. Espling, J. Tordsson, K. Djemame, and E. Elmroth. Runtime Virtual Machine Recontextualization for Clouds. Euro-Par 2012 Workshops, Lecture Notes of Compouting Science, Vol. 7640, Springer-Verlag, pp. 567 - 576, 2012.
 
-[#Gridftp:2007]: John Bresnahan, Michael Link, Gaurav Khanna, Zulfikar Imani, Rajkumar Kettimuthu and Ian Foster. Globus GridFTP. Proceedings of the First International Conference on Networks for Grid Applications (GridNets 2007), Oct, 2007
+[#Gridftp:2007]: J. Bresnahan, M. Link, G. Khanna, Z. Imani, R. Kettimuthu and I. Foster. Globus GridFTP. Proceedings of the First International Conference on Networks for Grid Applications (GridNets 2007), Oct, 2007
 
 [#OCCI:2012]: A. Edmonds, T. Metsch, A. Papaspyrou, and A. Richardson, “Toward an Open Cloud Standard,” IEEE Internet Computing, vol. 16, no. 4, Jul. 2012.
 
-[^1]: I'm a little footnote short and stout!
 
 
 
