@@ -152,9 +152,9 @@ The need for service relocation will become ever needed the more cloud services 
 
 [#BernsteinEtAl:2009]: D. Bernstein, E. Ludvigson, K. Sankar, S. Diamond, and M. Morrow (2009). Blueprint for the Intercloud - Protocols and Formats for Cloud Computing Interoperability. Internet and Web Applications and Services, 2009. 
 
-[#Bernstein:2010]: D. Bernstein, D. V. (2010). Intercloud Exchanges and Roots Topology and Trust Blueprint.
+[#Bernstein:2010]: D. Bernstein, D. Vij (2010). Intercloud Exchanges and Roots Topology and Trust Blueprint., The 2011 World Congress in Computer Science, Computer Engineering and Applied Computing.
 
-[#Demchenko:2012]: Y. Demchenko, M. X. (2012). Intercloud Architecture for Interoperability and Integration. 
+[#Demchenko:2012]: Y. Demchenko, M. X. Makkes, R. Strijkers, C. de Laat (2012). Intercloud Architecture for Interoperability and Integration. IEEE 4th International Conference on Cloud Computing Technology and Science (CloudCom)
 
 [#Alliance:2012]: Open Data Center Alliance (2012). Long Distance Workload Migration. ODCA.
 
