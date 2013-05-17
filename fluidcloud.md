@@ -72,7 +72,7 @@ The relocation of a PaaS based service instance and its data between providers. 
 3. Service Instance Adaptation: IaaS to PaaS.
 A software developer has developed a service on his own virtual machine in a (Private) Cloud now he wants to roll-out this service on an available PaaS provider such as Google App Engine.
 
-Currently infrastructure services are the main service type targeted by FluidCloud, however the architecture is capable to cover both platform services and IaaS to PaaS cases with different migrators.
+Currently infrastructure services are the main service type targeted by FluidCloud, however the architecture is capable to cover both platform services and IaaS to PaaS cases with different Migrators.
 
 # Implementation
 
@@ -169,6 +169,7 @@ The need for service relocation will become ever needed the more cloud services 
 [#Gridftp:2007]: J. Bresnahan, M. Link, G. Khanna, Z. Imani, R. Kettimuthu and I. Foster. Globus GridFTP. Proceedings of the First International Conference on Networks for Grid Applications (GridNets 2007), Oct, 2007
 
 [#OCCI:2012]: A. Edmonds, T. Metsch, A. Papaspyrou, and A. Richardson, “Toward an Open Cloud Standard,” IEEE Internet Computing, vol. 16, no. 4, Jul. 2012.
+
 
 
 
