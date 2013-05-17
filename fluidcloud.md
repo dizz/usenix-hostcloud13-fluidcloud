@@ -130,7 +130,7 @@ Overall the PoC proved the concepts to be working. In particular the implemented
 
 Standard organisations defined interfaces such as OCCI[^occi1] [#OCCI:2012], CIMI[^cimi1] or CDMI[^cdmi1] which may realise interoperability but they do not necessarily solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors will not interoperate, in part because they do not use the same data formats. 
 
-Adapter libraries enabled the means to manage multiple cloud offerings. The most prominent of these are Apache libcloud, fog.io, RightScale, Enstratus and jClouds.
+Adapter libraries enabled the means to manage multiple cloud offerings. The most prominent of these are Apache libcloud, fog.io, RightScale, Enstratius and jClouds.
 
 There are quite a number of Platform as a Service (PaaS) offerings available today.  Including Heroku, Red Hat OpenShift, CloudFoundry and Google App Engine. The majority of the PaaS offerings leverage the existing interoperability work that each language (and its standard libraries - e.g. WSGI for Python) and supporting services (e.g. MySQL, RabbitMQ) already have. However, this is not uniform across all PaaS offerings.
 
