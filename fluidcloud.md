@@ -148,7 +148,7 @@ The paper [#Ward:2010] looks at InterCloud more from the federation aspect and t
 
 # Conclusions and Further Work
 
-The need for service relocation will become ever needed the more cloud services are used and the more service owners move their services to the public cloud. FluidCloud will present a means for this to be supported a prototype framework is available. This framework will be released and supported under an Open Source license. There are further research and engineering challenges to be investigated including live service instance relocation between data centres, data payload minimisation, service decomposition over multiple target service providers and the leveraging of software-defined networking technologies.
+The need for service relocation will become ever needed the more cloud services are used and the more service owners move their services to the public cloud. Not only but as private cloud owners trust further and realise the value of the public cloud service relocation will be a need. FluidCloud will present a means for this to be supported a prototype framework is available. This framework will be released and supported under an Open Source license. There are further research and engineering challenges to be investigated including live service instance relocation between data centres, data payload minimisation, service decomposition over multiple target service providers and the leveraging of software-defined networking technologies.
 
 [#Grance:2011]: P. M. Grance  (2011). The NIST Definition of Cloud Computing. NIST special publication.
 
