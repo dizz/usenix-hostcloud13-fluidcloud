@@ -20,26 +20,26 @@ Within the highly populated ecosystem of cloud service providers combined with t
 
 To see how FluidCloud can be used in a practical sense, consider some examples which demonstrate the need for the FluidCloud framework.
 
-A **Cloud Service Developer** (CSD, e.g. University startup).
+* A **Cloud Service Developer** (CSD, e.g. University startup).
 Take the example where a university startup implements a new service in the cloud. The type of service is one that is architected to handle bursty traffic as described in [#Elson:2008]. After a period of time, the selected provider does not satisfy from technical (e.g. provider outages), economical (e.g. provider increasing prices), due to service offer changes. Here the benefits from a FluidCloud concept is that the startup can easily relocate their service to a new cloud service provider.
 
-A **Cloud Service Provider** (CSP; e.g. CloudSigma, ProfitBricks).
+* A **Cloud Service Provider** (CSP; e.g. CloudSigma, ProfitBricks).
 A cloud service provider would like to relocate (or "on board") new customers from other cloud service providers. What is needed is to relocate new end-user service instances to their services from other, potentially, competing, differentiated services. This would allow the CSP to let their customers seamlessly relocate and adapt to their service offering. The cloud service provider operates the FluidCloud framework and offers it as a service. 
 
-A **Cloud Broker** (e.g. CompatibleOne or Zimory).
+* A **Cloud Broker** (e.g. CompatibleOne or Zimory).
 Developers and providers of cloud brokerage services and software should consider adding cloud service relocation functionality to their cloud brokerage offers. Typically, a cloud broker discovers and provisions a cloud service instance on the behalf of the service owner. Once that target service instance is provisioned the end-user interacts and uses the target service instance, either through interfaces provided by the cloud broker or directly using the interfaces of the provisioned target service instance. The cloud broker is aware of the end-users service instances and can continually watch for compatible service types that can be offered to the end-user as a replacement, based on economic/geo-location/performance/feature/cost bases. If the service owner was interested the cloud broker can, using FluidCloud, relocate the service on the owner's behalf.
 
 ## FluidCloud Contributions
 
 For such scenarios, as described above, to be technically realised there is a set of missing technologies. FluidCloud fills these gaps by providing the following key contributions:
 
-**Service Instance Relocation** -- *Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider*. 
+1. **Service Instance Relocation** -- *Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider*. 
 There are two types of cloud services that FluidCloud will support and enable relocation for: IaaS and PaaS based services. The decision to relocate will be initiated by the owner of the service (e.g. through a user interface or API).
 
-**Service Instance Adaptation** - *The conversion, transformation and movement of the service and its related data*.
+2. **Service Instance Adaptation** - *The conversion, transformation and movement of the service and its related data*.
 Related to relocating IaaS and PaaS services are the potential service adaptations that need to take place. Parts of the service might need to be adapted when relocated. For example virtual machines may need to be adapted (re-contextualised) as its environment changes [#Armstrong:2012]. If we turn our attention to the PaaS area service instances need might need to be adopted (on source code level) for a certain target platform.
 
-**Data Relocation** - *Relocation, migration, transformation and conversion of the data belonging to the service*.
+3. **Data Relocation** - *Relocation, migration, transformation and conversion of the data belonging to the service*.
 Relocation of data fundamentally means moving bits and bytes. Currently tools such as GlobusOnline provide a service for easily transferring data between Grid sites using the proven GridFTP protocol [#Gridftp:2007]. Certainly technologies like Software Defined Networking can help when data paths are needed on-demand to be established between two providers. 
 
 # Architecture
