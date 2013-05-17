@@ -78,6 +78,8 @@ The relocation of a PaaS based service instance and its data between providers. 
 3. Service Instance Adaptation: IaaS to PaaS.
 A software developer has developed a service on his own virtual machine in a (Private) Cloud now he wants to roll-out this service on an available PaaS provider such as Google App Engine.
 
+Currently infrastructure services are the main service type targeted by FluidCloud, however the architecture is capable to cover both platform services and IaaS to PaaS cases with different migrators.
+
 # Implementation
 
 The first proof of concept (PoC) of the logical architecture for IaaS-based relocation has been implemented using the Python programming language. Each of the components are standalone processes which communicate with each other using asynchronous messaging (See Figure 2). The prototype uses the Advanced Message Queuing Protocol (AMQP). 
