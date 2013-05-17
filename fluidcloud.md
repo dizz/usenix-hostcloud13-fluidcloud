@@ -53,7 +53,7 @@ Core to realising FluidCloud are the following components shown in the proposed 
 The key components are the following:
 
 * **Service Instance** - A logical container that comprises the application and the data.
-* **CloudConduit** - Orchestrates the process, introspects the service instances (incl. topology) to be relocated. It is also responsible for the lifecycle of Migrators and setup of viaducts. The relocation is triggered with this module.
+* **CloudConduit** - Orchestrates the process, introspects the service instances (including topology) to be relocated. It is also responsible for the lifecycle of Migrators and setup of viaducts. The relocation is triggered with this module.
 * **Broker** - Discovers and provides both cloud provider services and Migrator facilities. Eventually it monitors the service instances. Also orchestrates the deployment of the Migrators.
 * **Migrator** - These are the libraries and services for adaptation and carry out one specific task related to relocation (possibly partial) of service instances. Multiple Migrators might be needed to carry out the overall relocation.
 * **Viaduct** - A logical path between two parties in which ‘Migrators’ are organised. All together those accomplish the task of relocating a service instance from one cloud provider to another. Migrators as well as more network-oriented components (like proxies) are ‘located’ on this path. All those components might be organised as workflows with multiple pipelines if needed. 
