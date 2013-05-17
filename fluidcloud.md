@@ -2,19 +2,19 @@ Base Header Level: 3
 
 # Introduction
 
-Today, cloud computing [#Grance:2011] service instances cannot easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players. When adopted, *de jure* standards are not as widely adopted as *de facto*  standards (e.g. Amazon EC2). Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see "Related Work"). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad hoc  efforts are spent by the service instance owners.
+Today, cloud computing [#Grance:2011] service instances cannot easily move from one cloud service provider to another. Cloud standards are seen to be the panacea, yet have little adoption by the market, especially by the market's dominant players. When adopted, *de jure* standards are not as widely adopted as *de facto* standards (e.g. Amazon EC2). Software libraries and frameworks that abstract cloud computing services to common interfaces are more widely adopted (see "Related Work"). However, even the most relevant standards or software libraries have little or no service instance relocation functionality. Ultimately, those cloud service instances remain locked under the control of the service provider, unless significant manual and/or ad hoc  efforts are spent by the service instance owners.
 
 The proposed solution is the FluidCloud framework which aims to make relocating services instances easier any autonomous. From this work a number of research and engineering challenges arise including data optimization, runtime architecture adaptation, and goal-oriented service instance relocation.
 
 # A Problem in the Cloud?
 
-Cloud service instances remain locked under the control of the service provider. FluidCloud will liberate these instances. Having the ability for a cloud service instance to easily and seamlessly move from one provider to another will bring advantages to any cloud service owner. It would bring more freedom to cloud service owners and their instances. Essentially, it will bring service instance "movement rights" to the cloud. However there is no encompassing means to accomplish this.
+Cloud service instances remain locked under the control of the service provider. FluidCloud will liberate these instances. Having the ability for a cloud service instance to easily and seamlessly move from one provider to another will bring advantages and freedom to any cloud service owner. Essentially, it will bring service instance "movement rights" to the cloud. However there is no encompassing means to accomplish this.
 
 FluidCloud fits within the soon future cloud. A reasonable view of this future cloud is the InterCloud. The InterCloud is described in [#BernsteinEtAl:2009], [#Bernstein:2010], [#Demchenko:2012] where the genesis and progression of it from singular and multi-cloud ecosystem is stated. The concept of the InterCloud is based on the proliferation and continued growth of public clouds ranging from IaaS, PaaS and up to SaaS. The ecosystem of these cloud service providers include the popular Amazon EC2, Rackspace, and CloudSigma. 
 
 ## The FluidCloud Concept
 
-Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequently adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between providers. The FluidCloud concept addresses multiple benefits. FluidCloud will bring **liberation** to cloud service developers and operators who own services and are responsible for end-user data. They should have the option of movement for those services instances and the efficient means to enable them. It will **enhance the InterCloud** by advancing the definition, architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the open source framework. It will make it more **economical** by suggesting new compatible service providers, based on economical differentiators. And should the service owner want it relocate their service instance to the suggested target provider. **Regulatory** obligations can dictate the geographical location of the service instance. If a running cloud service instance is in an unrecognized or risky geographic region, the service provider can use FluidCloud to relocate that service instance at risk. Finally, with ease of relocation, **positive market disruption**, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation is key.
+Within the highly populated ecosystem of cloud service providers combined with the InterCloud concept, it becomes crucial, both technically and financially, that service instances can be relocated and consequently adapted to their new service provider. In the vision of the FluidCloud framework, the hosting cloud provider of the service instance is not a concern anymore as the service can be fluidly (easily, on-demand and dynamically) relocated between service providers. The FluidCloud concept addresses multiple benefits: it will bring **liberation** to cloud service developers and operators who own services and are responsible for the associated data. They should have the option of movement for those services instances, data and the efficient means to enable them. It will **enhance the InterCloud** by advancing the definition (service topologoy), architecture and implementations of cloud computing, yet for stakeholders makes the transition easy through the framework. It will make it more **economical** by suggesting new compatible service providers, based on economical differentiators. And should the service owner want it, relocate their service instance to the suggested target provider. **Regulatory** obligations can dictate the geographical location of the service instance. If a running cloud service instance is in an unrecognized or risky geographic region, the service provider can use FluidCloud to relocate that service instance at risk. Finally, with ease of relocation, **positive market disruption**, the market place is opened further, enabling greater competition based on service provider differentiation and not on technical lock-in or limitation is key.
 
 ## FluidCloud Scenarios
 
@@ -24,14 +24,14 @@ A **Cloud Service Developer** (CSD, e.g. University startup).
 Take the example where a university startup implements a new service in the cloud. The type of service is one that is architected to handle bursty traffic as described in [#Elson:2008]. After a period of time, the selected provider does not satisfy from technical (e.g. provider outages), economical (e.g. provider increasing prices) or regulatory purposes, due to service offer changes. Now the benefits from a FluidCloud concept is that the startup can easily relocate their service to a new cloud service provider.
 
 A **Cloud Service Provider** (CSP; e.g. CloudSigma, ProfitBricks).
-A cloud service provider would like to relocate (or "on board") new customers from other cloud service providers. What is needed is to relocate new end-user service instances to their services from other, potentially, competing, differentiated services. This would allow the CSP to let their customers seamlessly relocate to their service offering. The cloud service provider operates the FluidCloud framework and offers it as a service. 
+A cloud service provider would like to relocate (or "on board") new customers from other cloud service providers. What is needed is to relocate new end-user service instances to their services from other, potentially, competing, differentiated services. This would allow the CSP to let their customers seamlessly relocate and adapt to their service offering. The cloud service provider operates the FluidCloud framework and offers it as a service. 
 
 A **Cloud Broker** (e.g. CompatibleOne or Zimory).
 Developers and providers of cloud brokerage services and software should consider adding cloud service relocation functionality to their cloud brokerage offers. Typically, a cloud broker discovers and provisions a cloud service instance on the behalf of the service owner. Once that target service instance is provisioned the end-user interacts and uses the target service instance, either through interfaces provided by the cloud broker or directly using the interfaces of the provisioned target service instance. The cloud broker is aware of the end-users service instances and can continually watch for compatible service types that can be offered to the end-user as a replacement, based on economic/geo-location/performance/feature/cost bases. If the service owner was interested the cloud broker can, using FluidCloud, relocate the service on the owner's behalf.
 
 ## FluidCloud Contributions
 
-For such scenarios, as described above, to be technically realised there is a set of missing technologies. FluidCloud fills these gaps by providing the following key contributions:
+For such scenarios, as described above, to be technically realized there is a set of missing technologies. FluidCloud fills these gaps by providing the following key contributions:
 
 **Service Instance Relocation** -- *Ensuring the overall orchestration and process of moving a cloud service from the source to the target cloud service provider*. 
 There are two types of cloud services that FluidCloud will support and enable relocation for: IaaS and PaaS based services. The decision to relocate will be initiated by the owner of the service (e.g. through a user interface or API).
@@ -44,7 +44,7 @@ Relocation of data fundamentally means moving bits and bytes. Currently tools su
 
 # Architecture
 
-Core to realising FluidCloud are the following components shown in the proposed logical architecture.
+Core to realizing FluidCloud are the following components shown in the proposed logical architecture.
 
 ![Conceptual Architecture][]
 
@@ -56,7 +56,7 @@ The key components are the following:
 * **CloudConduit** - Orchestrates the process, introspects the service instances (incl. topology) to be relocated. It is also responsible for the lifecycle of Migrators and setup of viaducts. The relocation is triggered with this module.
 * **Broker** - Discovers and provides both cloud provider services and Migrator facilities. Eventually it monitors the service instances. Also orchestrates the deployment of the Migrators.
 * **Migrator** - These are the libraries and services for adaptation and carry out one specific task related to relocation (possibly partial) of service instances. Multiple Migrators might be needed to carry out the overall relocation.
-* **Viaduct** - A logical path between two parties in which ‘Migrators’ are organised. All together those accomplish the task of relocating a service instance from one cloud provider to another. Migrators as well as more network-oriented components (like proxies) are ‘located’ on this path. All those components might be organised as workflows with multiple pipelines if needed. 
+* **Viaduct** - A logical path between two parties in which ‘Migrators’ are organized. All together those accomplish the task of relocating a service instance from one cloud provider to another. Migrators as well as more network-oriented components (like proxies) are ‘located’ on this path. All those components might be organised as workflows with multiple pipelines if needed. 
 * **Cloud Service Provider** - A provider of either IaaS or PaaS service types.
 
 In the diagram above, the CloudConduit analyses the service to be relocated and based on that it uses the ‘Broker’ to find suitable replacement providers. Based on the replacement provider the CloudConduit uses the Broker again to find suitable Migrators to aid the relocation process.
@@ -100,7 +100,7 @@ After relocation the virtual machine will be running on the SmartOS platform. Th
 
 The decision for this service topology after relocation is made by the CloudConduit and should be guided by service owner policies. Overall, to relocate this simple node.js application the following Migrators were placed on the Viaduct:
 
- * The virtual machine image Migrator will pause the virtual machine on the OpenStack side and create a new virtual machine on the SmartOS side. Both machines are then booted using a prepared ubuntu iso image[^os1]. This is done such that the contents of the source image can be copied to the target image. The image itself is copied using the *netcat* and the *dd* command on the running ubuntu instance. After this copy operation the virtual machine on the SmartOS platform can be booted and will be an exact copy of the source VM. This is one approach of many.
+ * The virtual machine image Migrator will pause the virtual machine on the OpenStack side and create a new virtual machine on the SmartOS side. Both machines are then booted using a prepared *ubuntu* image[^os1]. This is done such that the contents of the source image can be copied to the target image. The image itself is copied using the *netcat* and the *dd* command on the running ubuntu instances. After this copy operation the virtual machine on the SmartOS platform can be booted and will be an exact copy of the source VM. This is one approach of many.
  * The Relocator for the OpenStack block storage copies the data from the block storage device in OpenStack cinder onto the Filesystem of the virtual machine running on KVM in a SmartOS zone. This is done with the help of the *sftp* protocol.
  * Reconfiguration of the node.js application's configuration file is based on regular expressions and a simple Python script. It changes the paths for node.js interpreter and the path to the data.
 
@@ -110,17 +110,17 @@ The decision for this service topology after relocation is made by the CloudCond
 
 The first outcome of this initial PoC was to prove that the architecture satisfies the scenarios described in this paper. The separation between the CloudConduit and the Broker was found useful as several technologies for the Broker exist. Furthermore the Broker can be used to establish Viaduct(s) as this could be made up out of virtual machines, which each could host a Migrator[^mig1]. The overall architecture therefore has been proven to satisfy the needs.
 
-The second outcome was to have initial metrics about the runtime of a relocation process. In the end it will be crucial that the runtime is minimised and possibly reveal if actual online relocation can be achieved. For the relocation of the service instance in the PoC, a total downtime of ~10 minutes was needed. The relocation was performed over a 1 Gb Ethernet network.
+The second outcome was to have initial metrics about the runtime of a relocation process. In the end it will be crucial that the runtime is minimized and possibly reveal if actual online relocation can be achieved. For the relocation of the service instance in the PoC, a total downtime of ~10 minutes was needed. The relocation was performed over a 1 Gb Ethernet network.
 
 This combines the time for stopping the virtual machine and relocating it (seconds for stop, ~5 minutes for relocation of the virtual machine image of 5.4GB), the time to move the data from the block storage to the virtual machine (~1 minute for 512MB test file within) and finally the reconfiguration (~10 seconds to copy the script and execute it). Times fluctuated over several runs of the relocation. In general the time-to-relocation using this PoC will depend on the data payload sizes of the virtual machine image and the data in the block storage.
 
 Overall the PoC proved the concepts to be working. In particular the implemented architecture described in the last sections should demonstrate that the concepts of FluidCloud are technically feasible. More over, the important thing is that the concepts noted in this paper describe a way of enabling fluidity of services between clouds.
 
-[^mig1]: The migrators were executed in sequential order.
+[^mig1]: The Migrators were executed in sequential order.
 
 # Related Work
 
-Standard organisations defined interfaces such as OCCI[^occi1] [#OCCI:2012], CIMI[^cimi1] or CDMI[^cdmi1] which may realise interoperability but they do not necessarily solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilising different hypervisors will not interoperate, in part because they do not use the same data formats. 
+Standard organizations defined interfaces such as OCCI[^occi1] [#OCCI:2012], CIMI[^cimi1] or CDMI[^cdmi1] which may realize interoperability but they do not necessarily solve the issue of relocation. The paper [#Petcu:2011] reviews aspects related to portability and interoperability in clouds. It notes the lack of adoption of standards by vendors saying that "vendor[s] like[s] to put barriers to exit for their customers". Related thoughts are discussed in [#Jr:2011]. Here it is noted that cloud systems utilizing different hypervisors will not interoperate, in part because they do not use the same data formats. 
 
 Adapter libraries enabled the means to manage multiple cloud offerings. The most prominent of these are Apache libcloud, fog.io, RightScale, Enstratus and jClouds.
 
@@ -140,7 +140,7 @@ The paper [#Ward:2010] looks at InterCloud more from the federation aspect and t
 
 # Conclusions and Further Work
 
-The need for service relocation will become ever needed the more cloud services are used and the more service owners move their services to the public cloud. FluidCloud will present a means for this to be supported a prototype framework is available. This framework will be released and supported under an Open Source license. There are further research and engineering challenges to be investigated including live service instance relocation between data centers, data payload minimisation, service decomposition over multiple target service providers and the leveraging of software-defined networking technologies.
+The need for service relocation will become ever needed the more cloud services are used and the more service owners move their services to the public cloud. FluidCloud will present a means for this to be supported a prototype framework is available. This framework will be released and supported under an Open Source license. There are further research and engineering challenges to be investigated including live service instance relocation between data centers, data payload minimization, service decomposition over multiple target service providers and the leveraging of software-defined networking technologies.
 
 [#Grance:2011]: P. M. Grance  (2011). The NIST Definition of Cloud Computing. NIST special publication.
 
@@ -167,6 +167,7 @@ The need for service relocation will become ever needed the more cloud services 
 [#Gridftp:2007]: J. Bresnahan, M. Link, G. Khanna, Z. Imani, R. Kettimuthu and I. Foster. Globus GridFTP. Proceedings of the First International Conference on Networks for Grid Applications (GridNets 2007), Oct, 2007
 
 [#OCCI:2012]: A. Edmonds, T. Metsch, A. Papaspyrou, and A. Richardson, “Toward an Open Cloud Standard,” IEEE Internet Computing, vol. 16, no. 4, Jul. 2012.
+
 
 
 
